@@ -1,0 +1,133 @@
+.img-100-width{
+    width: 100%;
+}
+.logo-width{
+    width: 25%;
+}
+.list-style{
+    list-style: none;
+}
+.text-decoration{
+    text-decoration: none;
+}
+.margin-left-20{
+    margin-left: 20px;
+}
+.nav-link{
+    color: #000;
+}
+.nav-link:hover{
+    color: #f21c6b;
+}
+.up_arrow{
+    font-size: 17px;
+}
+.dropdown-custom-toggle:hover>.up_arrow i{
+    transform:rotate(-90deg);
+    transition: 0.5s ease-in-out;
+}
+
+.dropdown-custom-menu {
+    display: none;
+    
+  }
+.custom_dropdown:hover>.dropdown-custom-menu {
+    display: block;
+    position: absolute;
+  }
+  .dropdown-custom-item{
+    text-decoration: none;
+    color: #000;
+    /* padding: 5px; */
+    margin-top: 20px;
+  }
+  .dropdown-custom-item:hover{
+    background-color: #dddd;
+}
+.custom_dropdown>.dropdown-custom-toggle:active {
+/*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+.owl-next{
+    position: absolute;
+    top: 20%;
+    right: -4%;
+}
+.owl-nav:hover{
+    background-color: #fff;
+}
+.owl-prev{
+    position: absolute;
+    top: 20%;
+    right: 102%;
+}
+/* .owl-dots{
+    display: none;
+} */
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
+    background-color: #f21c6b;
+}
+.owl-theme .owl-dots .owl-dot{
+    zoom: 1.5;
+}
+.owl-theme .owl-nav {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 2.5rem;
+    color: #f21c6b;
+    font-weight: 700;
+}
+.banner{
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.banner img{
+    border-radius: 5px;
+}
+.carousel-box{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(45deg, #3a3838, transparent), url(../images/banner-img.jpg);
+    width: 100%;
+    border-radius: 10px;
+}
+.latest_blog_box{
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.latest_blog_img{
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.footer{
+    background-color: #3a3838;
+    margin-top: 10px;
+}
+.footer-box{
+    border-right: 2px solid #fff;
+}
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #686767;
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background: #f21c6b;
+    width: 0%;
+  }
+.content{
+    
+}
+.progress-bar{
+    position: fixed;
+    bottom: 0;
+}
+
+

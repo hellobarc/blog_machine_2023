@@ -238,7 +238,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         //for image resize
-        'Image' => 'Intervention\Image\Facades\Image'
+        'Image' => 'Intervention\Image\Facades\Image',
+
+        'Helper' => App\Helpers\Helper::class,
     ],
 
 ];

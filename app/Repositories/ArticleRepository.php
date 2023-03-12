@@ -11,7 +11,7 @@ class ArticleRepository implements ArticleRepositoryInterface
 {
     public function getAll()
     {
-        return Article::all();
+        return Article::orderBy('id', 'DESC')->with('category', 'author')->paginate(10);
     }
 
     public function getPaginate($per_page)

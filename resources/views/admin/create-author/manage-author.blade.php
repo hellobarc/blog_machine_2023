@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Manage Category')
+@section('title', 'Manage Author')
 @section('main-content')
     <!-- Content Wrapper. Contains page content -->
   	<div class="content-wrapper">
@@ -16,7 +16,7 @@
 										<div class="flex-grow-1 px-30 flex-grow-1 bg-img dask-bg bg-none-md" style="background-position: right bottom; background-size: auto 100%; background-image: url({{asset('ed_admin/images/svg-icon/color-svg/custom-1.svg')}})">
 											<div class="row">
 												<div class="col-12 col-xl-7">
-													<h3 class="fw-bolder">All Category</h3>
+													<h3 class="fw-bolder">All Author</h3>
 												</div>
 											</div>
 										</div>
@@ -26,27 +26,20 @@
 							<div class="card-body">
 								@include('admin.templetes.flash-message')
 								<div class="d-flex justify-content-end mb-3">
-									<a href="{{route('admin.create.category')}}" class="btn btn-success btn-sm"><i class="fa-solid fa-plus"></i></i> Add New</a>
+									<a href="{{route('create.author')}}" class="btn btn-success btn-sm"><i class="fa-solid fa-plus"></i></i> Add New</a>
 								</div>
 								<table class="table table-bordered table-striped">
 									<thead>
 										<th>SL No</th>
-										<th>Category Name</th>
-										<th>Title</th>
-										<th>Thumbnail</th>
+										<th>Author Name</th>
 										<th>Action</th>
 									</thead>
 									<tbody>
 										@foreach ($allData as $rows)
 											<tr>
 												<td>{{$loop->index+1}}</td>
-												<td>{{$rows->cat_name}}</td>
-												<td>{{$rows->page_title}}</td>
+												<td>{{$rows->author_name}}</td>
 												<td>
-													<img src="{{asset('uploads/category/thumbnail/'.$rows->featured_image)}}" alt="" width="50">
-												</td>
-												<td>
-													<a href="{{route('admin.show.category', $rows->id)}}" class="btn btn-success btn-sm">Edit</a>
 													<a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal_{{$rows->id}}">Delete</a>
 												</td>
 											</tr>
@@ -59,7 +52,7 @@
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
 														<div class="modal-body">
-															<a href="{{route('admin.destory.category', $rows->id)}}" class="btn btn-danger mt-2">Permanent Delete</a>
+															<a href="{{route('destory.author', $rows->id)}}" class="btn btn-danger mt-2">Permanent Delete</a>
 														</div>
 														<div class="modal-footer text-end">
 														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

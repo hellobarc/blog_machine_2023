@@ -15,6 +15,8 @@ use Illuminate\Support\Str;
 use Image;
 use File;
 use App\Models\Article;
+use App\Models\Category;
+use App\Models\Author;
 
 class ArticleController extends Controller
 {
@@ -25,29 +27,25 @@ class ArticleController extends Controller
         $this->articleRepository = $articleRepository;
     }
 
-    public function index(): JsonResponse 
+    public function index() 
     {
         $getData = $this->articleRepository->getAll();
         $allData = ArticleResource::collection($getData);
-        return response()->json([
-            'data' => $allData,
-        ]);
+        return view('admin.article.manage-article', compact('allData'));
     }
-
-   
-    public function store(SaveArticleRequest $request): JsonResponse 
+    public function create()
     {
-        $secondary_category_id =  [1,2,3];
+        $categories = Category::all();
+        $authors = Author::all();
+        return view('admin.article.create-article', compact('categories', 'authors'));
+    }
+   
+    public function store(SaveArticleRequest $request) 
+    {
         $image = $request->file('thumbnail');
         $img = time().'.'.$image->getClientOriginalExtension();
-        $location = public_path('uploads/article/original_thumbnail/' .$img);
-        $thumbnail = public_path('uploads/article/thumbnail/' .$img);
+        $location = public_path('uploads/article/thumbnail/' .$img);
         $imgFile = Image::make($image)->save($location);
-
-
-        $imgFile->resize(150, 150, function ($constraint) {
-		    $constraint->aspectRatio();
-		})->save($thumbnail);
 
         $articleDetails = $request->only([
             'title',
@@ -62,52 +60,37 @@ class ArticleController extends Controller
             'tags',
             'read_minutes',
             'references',
-            'co_authors',
-            // 'secondary_categories',
         ]);
-        // $articleDetails['is_featured'] = 1;
         $articleDetails['slug'] = Str::slug($request->input('title') ,"-");
         $articleDetails['thumbnail'] = $img;
-        $articleDetails['secondary_categories'] = json_encode($secondary_category_id);
+        $articleDetails['secondary_categories'] = json_encode($request->secondary_categories);
+        $articleDetails['co_authors'] = json_encode($request->co_authors);
 
-        return response()->json(
-            [
-                'status' => "Success",
-                'data' => $this->articleRepository->create($articleDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+        $storeData = $this->articleRepository->create($articleDetails);
+        return redirect()->route('admin.article')->with('success', 'Article Created Successfully.');
     }
 
-    public function show(Request $request): JsonResponse 
+    public function show(Request $request) 
     {
         $catId = $request->route('id');
-
-        return response()->json([
-            'data' => $this->articleRepository->getById($catId)
-        ]);
+        $data = $this->articleRepository->getById($catId);
+        $categories = Category::all();
+        $authors = Author::all();
+        return view('admin.article.edit-article', compact('data', 'categories', 'authors'));
     }
 
-    public function update(Request $request): JsonResponse 
+    public function update(Request $request) 
     {
         $articleId = $request->route('id');
         $find_id = Article::where('id', $articleId)->first();
-        if (File::exists('uploads/article/original_thumbnail/'.$find_id->thumbnail) && File::exists('uploads/article/thumbnail/'.$find_id->thumbnail)) {
-            File::delete('uploads/article/original_thumbnail/'.$find_id->thumbnail);
+        if (File::exists('uploads/article/thumbnail/'.$find_id->thumbnail)) {
             File::delete('uploads/article/thumbnail/'.$find_id->thumbnail);
         }
 
-        $secondary_category_id =  [1,2,3];
         $image = $request->file('thumbnail');
         $img = time().'.'.$image->getClientOriginalExtension();
-        $location = public_path('uploads/article/original_thumbnail/' .$img);
-        $thumbnail = public_path('uploads/article/thumbnail/' .$img);
+        $location = public_path('uploads/article/thumbnail/' .$img);
         $imgFile = Image::make($image)->save($location);
-
-
-        $imgFile->resize(150, 150, function ($constraint) {
-		    $constraint->aspectRatio();
-		})->save($thumbnail);
 
         $articleDetails = $request->only([
             'title',
@@ -122,37 +105,28 @@ class ArticleController extends Controller
             'tags',
             'read_minutes',
             'references',
-            'co_authors',
-            'secondary_categories',
         ]);
-        // $articleDetails['is_featured'] = '1';
         $articleDetails['slug'] = Str::slug($request->input('title') ,"-");
         $articleDetails['thumbnail'] = $img;
-        $articleDetails['secondary_categories'] = json_encode($secondary_category_id);
+        $articleDetails['secondary_categories'] = json_encode($request->secondary_categories);
+        $articleDetails['co_authors'] = json_encode($request->co_authors);
 
+        $updateData = $this->articleRepository->update($articleId, $articleDetails);
+        
 
-        return response()->json([
-            'status' => "Success",
-            'data' => $this->articleRepository->update($articleId, $articleDetails)
-        ]);
     }
 
-    public function destroy(Request $request): JsonResponse 
+    public function destroy(Request $request) 
     {
         $articleId = $request->route('id');
         $find_id = Article::where('id', $articleId)->first();
         if(!is_null($find_id))
     	{
-    		if (File::exists('uploads/article/original_thumbnail/'.$find_id->thumbnail) && File::exists('uploads/article/thumbnail/'.$find_id->thumbnail)) {
-                File::delete('uploads/article/original_thumbnail/'.$find_id->thumbnail);
+    		if (File::exists('uploads/article/thumbnail/'.$find_id->thumbnail)) {
                 File::delete('uploads/article/thumbnail/'.$find_id->thumbnail);
             }
         }
-        $this->articleRepository->delete($articleId);
-
-        // return response()->json(null, Response::HTTP_NO_CONTENT);
-        return response()->json([
-            'status' => "success deleted",
-        ]);
+        $deleteData = $this->articleRepository->delete($articleId);
+        return redirect()->route('admin.article')->with('success', 'Article Deleted Successfully.');
     }
 }

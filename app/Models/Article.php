@@ -38,6 +38,10 @@ class Article extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+    public function author()
+    {
+        return $this->belongsTo(Author::class, 'author_id');
+    }
     public function articleContent()
     {
         return $this->hasMany(ArticleContent::class, 'article_id');

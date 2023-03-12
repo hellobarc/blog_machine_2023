@@ -9,8 +9,6 @@ class AdminController extends Controller
 {
     public function adminDashboard()
     {
-       // dd($any);
-        // return view('admin.layouts.mastervue');
         return view('admin.dashboard');
     }
 }

@@ -11,3 +11,6 @@
 <script src="{{asset('ed_admin/js/template.js')}}"></script>
 <script src="{{asset('ed_admin/js/pages/dashboard.js')}}"></script>
 <script src="{{asset('ed_admin/js/pages/calendar.js')}}"></script>
+
+{{-- select2 cdn --}}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

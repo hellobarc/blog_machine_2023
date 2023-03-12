@@ -25,7 +25,7 @@ class SaveArticleRequest extends FormRequest
     {
         return [
             'title'             => 'required|string|max:100',
-            // 'category_id'       => 'required|integer',
+            'category_id'       => 'required|integer',
             'meta_keyword'      => 'required|max:200',
             'meta_description'  => 'required|max:10000',
             'page_title'        => 'required|string|max:200',
@@ -36,9 +36,9 @@ class SaveArticleRequest extends FormRequest
             'is_premium'        => 'required|integer',
             'tags'              => 'nullable|string|max:500',
             'read_minutes'      => 'required|string|max:500',
-            'references'        => 'nullable|min: 10',
-            'co_authors'        => 'nullable|integer',
-            'secondary_categories' => 'nullable|string',
+            'references'        => 'nullable',
+            'co_authors'        => 'nullable',
+            'secondary_categories' => 'nullable',
             'hits'              => 'nullable|integer',
             'smily_yes'         => 'nullable|integer',
             'smily_no'          => 'nullable|integer',

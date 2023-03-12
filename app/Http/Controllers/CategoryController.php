@@ -29,13 +29,14 @@ class CategoryController extends Controller
     {
         $getData = $this->categoryRepository->getAll();
         $allData = CategoryResource::collection($getData);
-        // return response()->json([
-        //     'data' => $allData,
-        // ]);
         return view('admin.category.manage-category', compact('allData'));
     }
+    public function create()
+    {
+        return view('admin.category.create-category');
+    }
 
-    public function store(SaveCategoryRequest $request): JsonResponse
+    public function store(SaveCategoryRequest $request)
     {
         $image = $request->file('featured_image');
         $img = time().'.'.$image->getClientOriginalExtension();
@@ -58,28 +59,23 @@ class CategoryController extends Controller
             'page_title',
         ]);
         $orderDetails['slug'] = Str::slug($request->input('cat_name') ,"-");
-        $orderDetails['featured_image'] =  $featured_path;
-        $orderDetails['thumbnail'] = $thumbnail_path;
+        $orderDetails['featured_image'] =  $img;
+        $orderDetails['thumbnail'] = $img;
 
-        return response()->json(
-            [
-                'status' => "success",
-                'data' => $this->categoryRepository->create($orderDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+        $getData = $this->categoryRepository->create($orderDetails);
+
+        return redirect()->route('admin.category')->with('success', 'Category Created Successfully.');
     }
 
-    public function show(Request $request): JsonResponse
+    public function show(Request $request)
     {
         $catId = $request->route('id');
 
-        return response()->json([
-            'data' => $this->categoryRepository->getById($catId)
-        ]);
+        $data = $this->categoryRepository->getById($catId);
+        return view('admin.category.edit-category', compact('data'));
     }
 
-    public function update(Request $request): JsonResponse
+    public function update(Request $request)
     {
         $catId = $request->route('id');
         $find_id = Category::where('id', $catId)->first();
@@ -107,35 +103,28 @@ class CategoryController extends Controller
             'page_title',
         ]);
         $orderDetails['slug'] = Str::slug($request->input('cat_name') ,"-");
-        $orderDetails['featured_image'] =  $featured_path;
-        $orderDetails['thumbnail'] = $thumbnail_path;
+        $orderDetails['featured_image'] =  $img;
+        $orderDetails['thumbnail'] = $img;
 
-        return response()->json([
-            'status' => "success",
-            'data' => $this->categoryRepository->update($catId, $categoryDetails)
-        ]);
+        $updateData = $this->categoryRepository->update($catId, $categoryDetails);
+
+        return redirect()->route('admin.category')->with('success', 'Category Update Successfully.');
     }
 
-    public function destroy(Request $request): JsonResponse
+    public function destroy(Request $request)
     {
         $catId = $request->route('id');
         $find_id = Category::where('id', $catId)->first();
-        $featured_path = $find_id->featured_image;
-
-        $thumbnail_path = $find_id->thumbnail;
+        
         if(!is_null($find_id))
     	{
-    		if (File::exists($featured_path) && File::exists($thumbnail_path)) {
-                unlink($featured_path);
-                unlink($thumbnail_path);
+    		if (File::exists('uploads/category/featured/'.$find_id->featured_image) && File::exists('uploads/category/thumbnail/'.$find_id->thumbnail)) {
+                File::delete('uploads/category/featured/'.$find_id->featured_image);
+                File::delete('uploads/category/thumbnail/'.$find_id->thumbnail);
             }
         }
-        $this->categoryRepository->delete($catId);
+        $deleteData = $this->categoryRepository->delete($catId);
 
-
-        // return response()->json(null, Response::HTTP_NO_CONTENT);
-        return response()->json([
-            'status' => "success deleted",
-        ]);
+        return redirect()->route('admin.category')->with('success', 'Category Deleted Successfully.');
     }
 }

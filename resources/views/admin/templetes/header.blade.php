@@ -48,7 +48,7 @@
 				 <a class="dropdown-item" href="#"><i class="ti-wallet text-muted me-2"></i> My Wallet</a>
 				 <a class="dropdown-item" href="#"><i class="ti-settings text-muted me-2"></i> Settings</a>
 				 <div class="dropdown-divider"></div>
-				 <div class="text-center">
+				 <div class="text-center pb-2">
 				 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
 					@csrf
 					<button class="btn btn-success btn-sm" type="submit">Logout</button>

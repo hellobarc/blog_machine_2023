@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomepageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\{
+                            CategoryController,
+                            ArticleController,
+                            AuthorController,
+                        };
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -31,7 +35,32 @@ Route::controller(HomepageController::class)
 
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class,'adminDashboard'])->name('admin.dashboard');
-    Route::get('/manage-category', [CategoryController::class,'index'])->name('admin.category');
+    // Create Author
+    Route::controller(AuthorController::class)->group(function () {
+        Route::get('/manage-author','index')->name('author');
+        Route::get('/create-author','create')->name('create.author');
+        Route::post('/store-author','store')->name('store.author');
+        Route::get('/destroy-author/{id}','destroy')->name('destory.author');
+    });
+    //category routes
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/manage-category','index')->name('admin.category');
+        Route::get('/create-category','create')->name('admin.create.category');
+        Route::post('/store-category','store')->name('admin.store.category');
+        Route::get('/show-category/{id}','show')->name('admin.show.category');
+        Route::post('/update-category/{id}','update')->name('admin.update.category');
+        Route::get('/destroy-category/{id}','destroy')->name('admin.destory.category');
+    });
+   
+    // Article routes
+    Route::controller(ArticleController::class)->group(function () {
+        Route::get('/manage-article','index')->name('admin.article');
+        Route::get('/create-article','create')->name('admin.create.article');
+        Route::post('/store-article','store')->name('admin.store.article');
+        Route::get('/show-article/{id}','show')->name('admin.show.article');
+        Route::post('/update-article/{id}','update')->name('admin.update.article');
+        Route::get('/destroy-article/{id}','destroy')->name('admin.destory.article');
+    });
 });
 
 

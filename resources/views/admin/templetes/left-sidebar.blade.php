@@ -30,6 +30,30 @@
 					<li><a href="{{route('admin.category')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Manage Category</a></li>
 				  </ul>
 				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="fa-solid fa-user"></i>
+					<span>Author</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="{{route('author')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Manage Author</a></li>
+				  </ul>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="fa-solid fa-newspaper"></i>
+					<span>Article</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="{{route('admin.article')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Manage Article</a></li>
+				  </ul>
+				</li>
 			  </ul>
 		  </div>
 		</div>

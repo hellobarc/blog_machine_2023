@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2023 at 02:12 PM
+-- Generation Time: Mar 12, 2023 at 01:48 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -68,7 +68,7 @@ CREATE TABLE `articles` (
   `tags` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `read_minutes` int(11) NOT NULL,
   `references` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `co_authors` int(11) DEFAULT NULL,
+  `co_authors` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `secondary_categories` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `hits` bigint(20) DEFAULT NULL,
   `smily_yes` int(11) DEFAULT NULL,
@@ -76,13 +76,6 @@ CREATE TABLE `articles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `articles`
---
-
-INSERT INTO `articles` (`id`, `title`, `category_id`, `slug`, `meta_keyword`, `meta_description`, `page_title`, `thumbnail`, `custom_date`, `author_id`, `is_featured`, `is_premium`, `tags`, `read_minutes`, `references`, `co_authors`, `secondary_categories`, `hits`, `smily_yes`, `smily_no`, `created_at`, `updated_at`) VALUES
-(1, 'sdafddsa', '1', '191', 'dsfasd', 'asdfasdasdf', 'asdfasdf', 'asdfasd.png', '2022-12-04', 1, '1', '1', 'adsafsd', 10, 'sdfsad', 2, '3', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -112,6 +105,28 @@ INSERT INTO `article_contents` (`id`, `article_id`, `content_subtitle`, `content
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `authors`
+--
+
+CREATE TABLE `authors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `author_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `authors`
+--
+
+INSERT INTO `authors` (`id`, `author_name`, `created_at`, `updated_at`) VALUES
+(2, 'First Author', '2023-03-12 04:25:00', '2023-03-12 04:25:00'),
+(3, 'Second Author', '2023-03-12 04:25:22', '2023-03-12 04:25:22'),
+(4, 'Third Author', '2023-03-12 04:25:36', '2023-03-12 04:25:36');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `categories`
 --
 
@@ -128,6 +143,13 @@ CREATE TABLE `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `cat_name`, `parent_id`, `slug`, `meta_keyword`, `meta_description`, `page_title`, `thumbnail`, `featured_image`, `created_at`, `updated_at`) VALUES
+(3, 'Fashion', 1, 'fashion', 'fashion', 'oasdfkjasiod', 'Men\'s Fashion', '1678603445.png', '1678603445.png', '2023-03-12 00:44:05', '2023-03-12 00:44:05');
 
 -- --------------------------------------------------------
 
@@ -263,7 +285,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2022_11_24_110002_create_left_text_videos_table', 2),
 (21, '2022_12_23_123552_create_social_settings_table', 2),
 (22, '2022_12_23_123641_create_widget_settings_table', 3),
-(23, '2023_03_10_100903_create_admins_table', 4);
+(23, '2023_03_10_100903_create_admins_table', 4),
+(24, '2023_03_12_094726_create_authors_table', 5);
 
 -- --------------------------------------------------------
 
@@ -566,6 +589,12 @@ ALTER TABLE `article_contents`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `authors`
+--
+ALTER TABLE `authors`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
@@ -708,10 +737,16 @@ ALTER TABLE `article_contents`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `authors`
+--
+ALTER TABLE `authors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -747,7 +782,7 @@ ALTER TABLE `left_text_videos`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `modules`

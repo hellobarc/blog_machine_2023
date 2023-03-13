@@ -14,7 +14,11 @@ use App\Http\Resources\CategoryResource;
 use Illuminate\Support\Str;
 use Image;
 use File;
-use App\Models\ImageContent;
+use App\Models\{
+                    ImageContent,
+                    Article,
+                    ArticleContent,
+                };
 
 class ImageContentController extends Controller
 {
@@ -33,12 +37,18 @@ class ImageContentController extends Controller
             'data' => $allData,
         ]);
     }
-
-    public function store(SaveImageContentRequest $request): JsonResponse
+    public function create()
     {
-        $image = $request->file('content');
+        $articles = Article::all();
+        $articleContents = ArticleContent::all();
+        return view('admin.image-content.create-image-content', compact('articles', 'articleContents'));
+    }
+
+    public function store(SaveImageContentRequest $request)
+    {
+        $image = $request->file('image');
         $img = time().'.'.$image->getClientOriginalExtension();
-        $featured_path = 'uploads/article_content/image_content/' .$img;
+        $featured_path = 'uploads/image_content/' .$img;
         $location = public_path($featured_path);
 
         $imgFile = Image::make($image)->save($location);
@@ -48,14 +58,9 @@ class ImageContentController extends Controller
             'article_content_id',
             // 'content',
         ]);
-        $imageContentDetails['content'] = $img;
-        return response()->json(
-            [
-                'status' => "success",
-                'data' => $this->imageContentRepository->create($imageContentDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+        $imageContentDetails['image'] = $img;
+        $storeData = $this->imageContentRepository->create($imageContentDetails);
+        return redirect()->route('admin.create.image-content')->with('success', 'Image Content Created Successfully.');
     }
 
     public function show(Request $request): JsonResponse

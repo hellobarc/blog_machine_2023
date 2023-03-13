@@ -26,7 +26,7 @@ class SaveImageContentRequest extends FormRequest
         return [
             'article_id' => 'required|integer',
             'article_content_id' => 'required|integer',
-            'content' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ];
     }
 }

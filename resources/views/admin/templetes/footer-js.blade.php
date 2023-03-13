@@ -14,3 +14,8 @@
 
 {{-- select2 cdn --}}
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{{-- ckeditor --}}
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<script>
+    CKEDITOR.replace('content');
+</script>

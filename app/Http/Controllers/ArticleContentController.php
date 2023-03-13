@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use Image;
 use File;
 use App\Models\ArticleContent;
+use App\Models\Article;
 
 class ArticleContentController extends Controller
 {
@@ -24,16 +25,18 @@ class ArticleContentController extends Controller
         $this->articleContentRepository = $articleContentRepository;
     }
 
-    public function index(): JsonResponse 
+    public function index() 
     {
         $getData = $this->articleContentRepository->getAll();
         $allData = CategoryResource::collection($getData);
-        return response()->json([
-            'data' => $allData,
-        ]);
+        return view('admin.article-content.manage-article-content', compact('allData'));
     }
-
-    public function store(SaveArticleContentRequest $request): JsonResponse 
+    public function create()
+    {
+        $articles = Article::all();
+        return view('admin.article-content.create-article-content', compact('articles'));
+    }
+    public function store(SaveArticleContentRequest $request) 
     {
         $articleContentDetails = $request->only([
             'article_id',
@@ -42,26 +45,20 @@ class ArticleContentController extends Controller
             'layout',
             'layout_width',
         ]);
-
-        return response()->json(
-            [
-                'status' => "success",
-                'data' => $this->articleContentRepository->create($articleContentDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+        
+        $storeData = $this->articleContentRepository->create($articleContentDetails);
+        return redirect()->route('admin.article-content')->with('success', 'Article Content Created Successfully.');
     }
 
-    public function show(Request $request): JsonResponse 
+    public function show(Request $request) 
     {
         $articleId = $request->route('id');
-
-        return response()->json([
-            'data' => $this->articleContentRepository->getById($articleId)
-        ]);
+        $data = $this->articleContentRepository->getById($articleId);
+        $articles = Article::all();
+        return view('admin.article-content.edit-article-content', compact('data', 'articles'));
     }
 
-    public function update(Request $request): JsonResponse 
+    public function update(Request $request) 
     {
         $articleId = $request->route('id');
         
@@ -74,24 +71,17 @@ class ArticleContentController extends Controller
         ]);
 
         $update = $this->articleContentRepository->update($articleId, $articleContentDetails);
-    
-        return response()->json([
-            'status' => "success",
-            'data' =>  $update 
-        ]);
+
+        return redirect()->route('admin.article-content')->with('success', 'Article Content Update Successfully.');
     }
 
-    public function destroy(Request $request): JsonResponse 
+    public function destroy(Request $request) 
     {
         $articleId = $request->route('id');
        
         $this->articleContentRepository->delete($articleId);
 
-
-        // return response()->json(null, Response::HTTP_NO_CONTENT);
-        return response()->json([
-            'status' => "success deleted",
-        ]);
+        return redirect()->route('admin.article-content')->with('success', 'Article Content delete Successfully.');
     }
     public function articleContentByArticleId(Request $request): JsonResponse 
     {

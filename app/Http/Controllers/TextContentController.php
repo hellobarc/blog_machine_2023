@@ -14,7 +14,11 @@ use App\Http\Resources\CategoryResource;
 use Illuminate\Support\Str;
 use Image;
 use File;
-use App\Models\TextContent;
+use App\Models\{
+                    TextContent,
+                    Article,
+                    ArticleContent,
+                };
 
 class TextContentController extends Controller
 {
@@ -33,8 +37,14 @@ class TextContentController extends Controller
             'data' => $allData,
         ]);
     }
-
-    public function store(SaveTextContentRequest $request): JsonResponse 
+    public function create($content_type)
+    {
+        $articles = Article::all();
+        $articleContents = ArticleContent::all();
+        $textContents = TextContent::orderBy('id', 'DESC')->with('article', 'articleContent')->get();
+        return view('admin.text-content.create-text-content', compact('articles', 'articleContents', 'textContents', 'content_type'));
+    }
+    public function store(SaveTextContentRequest $request) 
     {
         $textContentDetails = $request->only([
             'article_id',
@@ -43,26 +53,22 @@ class TextContentController extends Controller
             'font',
             'font_size',
         ]);
-
-        return response()->json(
-            [
-                'status' => "success",
-                'data' => $this->textContentRepository->create($textContentDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+        $content_type= $request->content_type;
+        $storeData = $this->textContentRepository->create($textContentDetails);
+        return redirect()->route('admin.create.text-content', $content_type)->with('success', 'Text Content Created Successfully.');
     }
 
-    public function show(Request $request): JsonResponse 
+    public function show(Request $request, $content_type) 
     {
         $textContectId = $request->route('id');
 
-        return response()->json([
-            'data' => $this->textContentRepository->getById($textContectId)
-        ]);
+        $data = $this->textContentRepository->getById($textContectId);
+        $articles = Article::all();
+        $articleContents = ArticleContent::all();
+        return view('admin.text-content.edit-text-content', compact('data', 'articles', 'articleContents', 'content_type'));
     }
 
-    public function update(Request $request): JsonResponse 
+    public function update(Request $request) 
     {
         $textContectId = $request->route('id');
         
@@ -73,24 +79,18 @@ class TextContentController extends Controller
             'font',
             'font_size',
         ]);
-    
-        return response()->json([
-            'status' => "success",
-            'data' => $this->textContentRepository->update($textContectId, $textContentDetails)
-        ]);
+        $content_type= $request->content_type;
+        $updateData = $this->textContentRepository->update($textContectId, $textContentDetails);
+        return redirect()->route('admin.create.text-content', $content_type)->with('success', 'Text Content Update Successfully.');
     }
 
-    public function destroy(Request $request): JsonResponse 
+    public function destroy(Request $request) 
     {
         $textContectId = $request->route('id');
        
         $this->textContentRepository->delete($textContectId);
 
-
-        // return response()->json(null, Response::HTTP_NO_CONTENT);
-        return response()->json([
-            'status' => "success deleted",
-        ]);
+        return redirect()->route('admin.create.text-content')->with('success', 'Text Content Deleted Successfully.');
     }
     public function textContentByArticleContentId(Request $request): JsonResponse 
     {

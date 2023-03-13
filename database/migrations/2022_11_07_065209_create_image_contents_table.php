@@ -17,7 +17,7 @@ class CreateImageContentsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('article_id')->default(0);
             $table->bigInteger('article_content_id');
-            $table->longText('content')->comment('image_url');
+            $table->text('image')->comment('image_url');
             // $table->string('font');
             // $table->smallInteger('font_size');
             $table->timestamps();

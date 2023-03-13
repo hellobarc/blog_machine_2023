@@ -13,8 +13,7 @@ class ImageContent extends Model
         'id',
         'article_id',
         'article_content_id',
-        'content',
-        // 'font',
-        // 'font_size',
+        'image',
+       
     ];
 }

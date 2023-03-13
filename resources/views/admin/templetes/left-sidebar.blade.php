@@ -52,6 +52,7 @@
 				  </a>
 				  <ul class="treeview-menu">
 					<li><a href="{{route('admin.article')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Manage Article</a></li>
+					<li><a href="{{route('admin.article-content')}}"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Manage Article Content</a></li>
 				  </ul>
 				</li>
 			  </ul>

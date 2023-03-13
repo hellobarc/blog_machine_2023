@@ -104,7 +104,7 @@ class HomepageController extends Controller
         $detail_post  =    $this->articleRepository->detailsPost($id);
         $related_post  =    $this->articleRepository->relatedPost($id);
 
-      //  dd( $related_post);
+     
 
         $meta['title'] = $detail_post[0]->title;
         $meta['description'] =  $detail_post[0]->meta_description;
@@ -115,5 +115,6 @@ class HomepageController extends Controller
         return view('theme.'.$this->theme_name.'.pages.detail_page')->with(['meta'=>$meta,'detail_post'=>$detail_post,'related_post'=>$related_post] );
 
     }
+    
 
 }

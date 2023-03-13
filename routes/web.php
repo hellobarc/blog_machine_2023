@@ -8,6 +8,9 @@ use App\Http\Controllers\{
                             CategoryController,
                             ArticleController,
                             AuthorController,
+                            ArticleContentController,
+                            TextContentController,
+                            ImageContentController,
                         };
 
 use App\Http\Controllers\Auth\LoginController;
@@ -61,6 +64,31 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
         Route::post('/update-article/{id}','update')->name('admin.update.article');
         Route::get('/destroy-article/{id}','destroy')->name('admin.destory.article');
     });
+    // Article content routes
+    Route::controller(ArticleContentController::class)->group(function () {
+        Route::get('/manage-article-content','index')->name('admin.article-content');
+        Route::get('/create-article-content','create')->name('admin.create.article-content');
+        Route::post('/store-article-content','store')->name('admin.store.article-content');
+        Route::get('/show-article-content/{id}','show')->name('admin.show.article-content');
+        Route::post('/update-article-content/{id}','update')->name('admin.update.article-content');
+        Route::get('/destroy-article-content/{id}','destroy')->name('admin.destory.article-content');
+    });
+    Route::controller(TextContentController::class)->group(function () {
+        Route::get('/manage-text-content','index')->name('admin.text-content');
+        Route::get('/create-text-content/{content_type}','create')->name('admin.create.text-content');
+        Route::post('/store-text-content','store')->name('admin.store.text-content');
+        Route::get('/show-text-content/{id}/{content_type}','show')->name('admin.show.text-content');
+        Route::post('/update-text-content/{id}','update')->name('admin.update.text-content');
+        Route::get('/destroy-text-content/{id}','destroy')->name('admin.destory.text-content');
+    });
+    Route::controller(ImageContentController::class)->group(function () {
+        Route::get('/manage-image-content','index')->name('admin.image-content');
+        Route::get('/create-image-content','create')->name('admin.create.image-content');
+        Route::post('/store-image-content','store')->name('admin.store.image-content');
+        Route::get('/show-image-content/{id}','show')->name('admin.show.image-content');
+        Route::post('/update-image-content/{id}','update')->name('admin.update.image-content');
+        Route::get('/destroy-image-content/{id}','destroy')->name('admin.destory.image-content');
+    });
 });
 
 
@@ -76,6 +104,4 @@ Route::get('/admin/register',[RegisterController::class,'showAdminRegisterForm']
 Route::post('/admin/register',[RegisterController::class,'createAdmin'])->name('admin.register');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/admin/dashboard',function(){
-//     return view('admin');
-// })->middleware('auth:admin');
+

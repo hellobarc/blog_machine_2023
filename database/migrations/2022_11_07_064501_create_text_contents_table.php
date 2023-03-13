@@ -17,9 +17,9 @@ class CreateTextContentsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('article_id')->default(0);
             $table->bigInteger('article_content_id');
-            $table->longText('content')->nullable();
-            $table->string('font');
-            $table->smallInteger('font_size');
+            $table->longText('content');
+            $table->string('font')->nullable();
+            $table->smallInteger('font_size')->nullable();
             $table->timestamps();
         });
     }

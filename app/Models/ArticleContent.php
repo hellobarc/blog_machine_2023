@@ -12,11 +12,14 @@ class ArticleContent extends Model
     protected $fillable = [
         'id',
         'article_id',
-        // 'contact_name',
         'content_subtitle',
         'content_type',
         'layout',
         'layout_width'
     ];
+    public function article()
+    {
+        return $this->belongsTo(Article::class, 'article_id');
+    }
 
 }

@@ -26,9 +26,9 @@ class SaveTextContentRequest extends FormRequest
         return [
             'article_id' => 'required|integer',
             'article_content_id' => 'required|integer',
-            'content' => 'nullable|string',
-            'font' => 'required|string',
-            'font_size' => 'required|integer',
+            'content' => 'required|string',
+            'font' => 'nullable|string',
+            'font_size' => 'nullable|integer',
         ];
     }
 }

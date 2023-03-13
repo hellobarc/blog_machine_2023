@@ -8,9 +8,9 @@ use App\Models\Article;
 
 class ArticleContentRepository implements ArticleContentRepositoryInterface 
 {
-    public function getAll() 
+    public function getAll()
     {
-        return ArticleContent::all();
+        return ArticleContent::orderBy('id', 'DESC')->with('article')->paginate(10);
     }
 
     public function getById($Id) 

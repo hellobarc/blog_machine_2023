@@ -17,5 +17,13 @@ class TextContent extends Model
         'font',
         'font_size',
     ];
+    public function article()
+    {
+        return $this->belongsTo(Article::class, 'article_id');
+    }
+    public function articleContent()
+    {
+        return $this->belongsTo(ArticleContent::class, 'article_content_id');
+    }
 
 }

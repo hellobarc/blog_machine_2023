@@ -27,6 +27,7 @@
 								@include('admin.templetes.flash-message')
 								<div class="d-flex justify-content-end mb-3">
 									<a href="{{route('admin.create.article')}}" class="btn btn-success btn-sm"><i class="fa-solid fa-plus"></i></i> Add New</a>
+									<a href="{{route('admin.create.article-content')}}" class="btn btn-primary btn-sm mx-2"><i class="fa-solid fa-plus"></i></i> Add Article content</a>
 								</div>
 								<table class="table table-bordered table-striped">
 									<thead>
@@ -48,7 +49,6 @@
 										@foreach ($allData as $rows)
 											@php
 												$decode_co_author = json_decode($rows->co_authors);
-												print_r($decode_co_author);
 											@endphp
 										
 											<tr>

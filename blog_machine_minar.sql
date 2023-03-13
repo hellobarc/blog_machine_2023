@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2023 at 01:48 PM
+-- Generation Time: Mar 13, 2023 at 01:52 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -77,6 +77,13 @@ CREATE TABLE `articles` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `articles`
+--
+
+INSERT INTO `articles` (`id`, `title`, `category_id`, `slug`, `meta_keyword`, `meta_description`, `page_title`, `thumbnail`, `custom_date`, `author_id`, `is_featured`, `is_premium`, `tags`, `read_minutes`, `references`, `co_authors`, `secondary_categories`, `hits`, `smily_yes`, `smily_no`, `created_at`, `updated_at`) VALUES
+(2, 'First Article', '3', 'first-article', 'First keyword, Second keyword, Third keyword', 'Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected humour and the like.', 'Men\'s Fashion', '1678683713.png', '2023-03-13', 2, '1', '0', 'First tag, Second tag, Third tag', 10, 'https://www.lipsum.com/', '[\"3\",\"4\"]', '[\"3\"]', NULL, NULL, NULL, '2023-03-12 23:01:53', '2023-03-12 23:01:53');
+
 -- --------------------------------------------------------
 
 --
@@ -99,8 +106,9 @@ CREATE TABLE `article_contents` (
 --
 
 INSERT INTO `article_contents` (`id`, `article_id`, `content_subtitle`, `content_type`, `layout`, `layout_width`, `created_at`, `updated_at`) VALUES
-(1, 1, 'fdsf', 'text', 'full_width', 12, '2022-11-23 09:12:23', '2022-11-23 09:12:23'),
-(2, 1, 'fdsfsgere', 'quote', 'full_width', 12, '2022-11-23 09:12:23', '2022-11-23 09:12:23');
+(4, 2, 'First content sub title', 'text', 'full_width', 12, '2023-03-13 00:26:40', '2023-03-13 00:26:40'),
+(5, 2, 'Second content title', 'quote', 'full_width', 12, '2023-03-13 03:18:57', '2023-03-13 03:18:57'),
+(6, 2, 'Third content title', 'image', 'left', 6, '2023-03-13 05:19:29', '2023-03-13 05:19:29');
 
 -- --------------------------------------------------------
 
@@ -212,7 +220,7 @@ CREATE TABLE `image_contents` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `article_id` bigint(20) NOT NULL,
   `article_content_id` bigint(20) NOT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -221,7 +229,7 @@ CREATE TABLE `image_contents` (
 -- Dumping data for table `image_contents`
 --
 
-INSERT INTO `image_contents` (`id`, `article_id`, `article_content_id`, `content`, `created_at`, `updated_at`) VALUES
+INSERT INTO `image_contents` (`id`, `article_id`, `article_content_id`, `image`, `created_at`, `updated_at`) VALUES
 (1, 0, 1, 'user.png', '2022-11-24 10:21:54', '2022-11-24 10:21:54');
 
 -- --------------------------------------------------------
@@ -485,8 +493,8 @@ CREATE TABLE `text_contents` (
   `article_id` bigint(20) NOT NULL,
   `article_content_id` bigint(20) NOT NULL,
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `font` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `font_size` smallint(6) NOT NULL,
+  `font` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `font_size` smallint(6) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -496,7 +504,8 @@ CREATE TABLE `text_contents` (
 --
 
 INSERT INTO `text_contents` (`id`, `article_id`, `article_content_id`, `content`, `font`, `font_size`, `created_at`, `updated_at`) VALUES
-(1, 0, 1, 'sadfasdasdasdfasd', 'san-scrif', 20, '2022-11-24 10:14:05', '2022-11-24 10:14:05');
+(3, 2, 4, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar ante sem, in tincidunt nisi lobortis eget. Aenean felis tellus, vulputate ac lectus sit amet, luctus euismod eros. Vivamus semper pulvinar sagittis. Ut eget metus in est lobortis pharetra ut sed tortor. Aliquam non tortor fermentum, congue orci non, vulputate nibh. Vestibulum sagittis mollis massa, vel varius velit ultrices sit amet. Vivamus feugiat volutpat enim. Maecenas ullamcorper nibh in lorem efficitur tincidunt. Pellentesque egestas iaculis pulvinar.</p>', 'sans-serif', 14, '2023-03-13 03:17:02', '2023-03-13 04:09:53'),
+(4, 2, 5, '<p>&#39;&#39;Suspendisse varius odio ac tellus ultricies placerat. Donec aliquet aliquet lorem ac imperdiet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras faucibus, metus in euismod venenatis, nisi magna consequat justo, nec commodo nibh nibh eget leo. Pellentesque tincidunt porttitor rutrum.&#39;&#39;</p>', NULL, NULL, '2023-03-13 03:57:51', '2023-03-13 03:57:51');
 
 -- --------------------------------------------------------
 
@@ -728,13 +737,13 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `article_contents`
 --
 ALTER TABLE `article_contents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `authors`
@@ -830,7 +839,7 @@ ALTER TABLE `right_text_videos`
 -- AUTO_INCREMENT for table `text_contents`
 --
 ALTER TABLE `text_contents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

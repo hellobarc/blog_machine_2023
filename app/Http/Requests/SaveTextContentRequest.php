@@ -26,7 +26,7 @@ class SaveTextContentRequest extends FormRequest
         return [
             'article_id' => 'required|integer',
             'article_content_id' => 'required|integer',
-            'content' => 'required|string',
+            'content' => 'nullable|string',
             'font' => 'nullable|string',
             'font_size' => 'nullable|integer',
         ];

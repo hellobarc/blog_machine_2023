@@ -29,7 +29,7 @@ class LeftTextVideoRepository implements LeftTextVideoRepositoryInterface
 
     public function update($Id, array $newDetails) 
     {
-        return RightTextVideo::whereId($Id)->update($newDetails);
+        return LeftTextVideo::whereId($Id)->update($newDetails);
     }
 
 }

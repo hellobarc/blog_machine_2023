@@ -52,6 +52,9 @@
 														<option value="image">Image</option>
 														<option value="subheadline">Sub-Heading</option>
 														<option value="intro">Intor</option>
+														<option value="list-content">List Content</option>
+														<option value="left-text-video">Left text video</option>
+														<option value="right-text-video">Right text video</option>
 													</select>
 												</div>
 												<div class="form-group">

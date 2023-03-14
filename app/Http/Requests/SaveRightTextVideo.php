@@ -24,6 +24,7 @@ class SaveRightTextVideo extends FormRequest
     public function rules()
     {
         return [
+            'article_id' => 'required|integer',
             'article_content_id' => 'required|integer',
             'content_title' => 'required|string',
             'content_text' => 'required',

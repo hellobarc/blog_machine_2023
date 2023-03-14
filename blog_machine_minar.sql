@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2023 at 01:52 PM
+-- Generation Time: Mar 14, 2023 at 01:58 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -94,7 +94,7 @@ CREATE TABLE `article_contents` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `article_id` bigint(20) NOT NULL,
   `content_subtitle` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content_type` enum('text','quote','image','subheadline','intro') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content_type` enum('text','quote','image','subheadline','intro','list-content','left-text-video','right-text-video') COLLATE utf8mb4_unicode_ci NOT NULL,
   `layout` enum('full_width','left','right','center') COLLATE utf8mb4_unicode_ci NOT NULL,
   `layout_width` smallint(6) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -108,7 +108,12 @@ CREATE TABLE `article_contents` (
 INSERT INTO `article_contents` (`id`, `article_id`, `content_subtitle`, `content_type`, `layout`, `layout_width`, `created_at`, `updated_at`) VALUES
 (4, 2, 'First content sub title', 'text', 'full_width', 12, '2023-03-13 00:26:40', '2023-03-13 00:26:40'),
 (5, 2, 'Second content title', 'quote', 'full_width', 12, '2023-03-13 03:18:57', '2023-03-13 03:18:57'),
-(6, 2, 'Third content title', 'image', 'left', 6, '2023-03-13 05:19:29', '2023-03-13 05:19:29');
+(6, 2, 'Third content title', 'image', 'left', 6, '2023-03-13 05:19:29', '2023-03-13 05:19:29'),
+(7, 2, 'Content fourth title', 'image', 'right', 6, '2023-03-13 23:21:56', '2023-03-13 23:21:56'),
+(8, 2, 'Fifth Content title', 'subheadline', 'full_width', 12, '2023-03-13 23:23:04', '2023-03-13 23:23:04'),
+(9, 2, 'Six sub content title', 'list-content', 'full_width', 12, '2023-03-14 00:18:44', '2023-03-14 00:18:44'),
+(10, 2, 'Seventh content sub title', 'left-text-video', 'full_width', 12, '2023-03-14 05:02:52', '2023-03-14 05:02:52'),
+(11, 2, 'Eight content title', 'right-text-video', 'full_width', 12, '2023-03-14 06:15:11', '2023-03-14 06:15:11');
 
 -- --------------------------------------------------------
 
@@ -230,7 +235,8 @@ CREATE TABLE `image_contents` (
 --
 
 INSERT INTO `image_contents` (`id`, `article_id`, `article_content_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 0, 1, 'user.png', '2022-11-24 10:21:54', '2022-11-24 10:21:54');
+(3, 2, 6, '1678770804.jpg', '2023-03-13 23:13:24', '2023-03-13 23:13:24'),
+(4, 2, 7, '1678771336.jpg', '2023-03-13 23:22:16', '2023-03-13 23:22:16');
 
 -- --------------------------------------------------------
 
@@ -240,6 +246,7 @@ INSERT INTO `image_contents` (`id`, `article_id`, `article_content_id`, `image`,
 
 CREATE TABLE `left_text_videos` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `article_id` int(11) NOT NULL,
   `article_content_id` bigint(20) NOT NULL,
   `content_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content_text` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -252,8 +259,8 @@ CREATE TABLE `left_text_videos` (
 -- Dumping data for table `left_text_videos`
 --
 
-INSERT INTO `left_text_videos` (`id`, `article_content_id`, `content_title`, `content_text`, `video_url`, `created_at`, `updated_at`) VALUES
-(1, 1, 'asdfasd', 'sdafewrgdfsgds', 'www.facebook.com', '2022-11-24 05:48:18', '2022-11-24 05:48:18');
+INSERT INTO `left_text_videos` (`id`, `article_id`, `article_content_id`, `content_title`, `content_text`, `video_url`, `created_at`, `updated_at`) VALUES
+(3, 2, 10, 'IELTS Speaking Test Part 1 Solution', 'Content text', 'https://www.youtube.com/embed/YgbIC4ovBsk', '2023-03-14 06:06:26', '2023-03-14 06:06:26');
 
 -- --------------------------------------------------------
 
@@ -416,6 +423,7 @@ CREATE TABLE `ratings` (
 
 CREATE TABLE `right_text_videos` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `article_id` int(11) NOT NULL,
   `article_content_id` bigint(20) NOT NULL,
   `content_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content_text` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -428,8 +436,8 @@ CREATE TABLE `right_text_videos` (
 -- Dumping data for table `right_text_videos`
 --
 
-INSERT INTO `right_text_videos` (`id`, `article_content_id`, `content_title`, `content_text`, `video_url`, `created_at`, `updated_at`) VALUES
-(1, 1, 'asdfasd', 'sdafewrgdfsgds', 'www.google.com', '2022-11-24 05:45:27', '2022-11-24 05:45:27');
+INSERT INTO `right_text_videos` (`id`, `article_id`, `article_content_id`, `content_title`, `content_text`, `video_url`, `created_at`, `updated_at`) VALUES
+(3, 2, 11, 'IELTS Band 9 Speaking | Cambridge IELTS Speaking Test', 'COntent test 2', 'https://www.youtube.com/embed/IB9r7HduK00', '2023-03-14 06:53:54', '2023-03-14 06:53:54');
 
 -- --------------------------------------------------------
 
@@ -492,9 +500,10 @@ CREATE TABLE `text_contents` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `article_id` bigint(20) NOT NULL,
   `article_content_id` bigint(20) NOT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `font` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `font_size` smallint(6) DEFAULT NULL,
+  `content_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -503,9 +512,11 @@ CREATE TABLE `text_contents` (
 -- Dumping data for table `text_contents`
 --
 
-INSERT INTO `text_contents` (`id`, `article_id`, `article_content_id`, `content`, `font`, `font_size`, `created_at`, `updated_at`) VALUES
-(3, 2, 4, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar ante sem, in tincidunt nisi lobortis eget. Aenean felis tellus, vulputate ac lectus sit amet, luctus euismod eros. Vivamus semper pulvinar sagittis. Ut eget metus in est lobortis pharetra ut sed tortor. Aliquam non tortor fermentum, congue orci non, vulputate nibh. Vestibulum sagittis mollis massa, vel varius velit ultrices sit amet. Vivamus feugiat volutpat enim. Maecenas ullamcorper nibh in lorem efficitur tincidunt. Pellentesque egestas iaculis pulvinar.</p>', 'sans-serif', 14, '2023-03-13 03:17:02', '2023-03-13 04:09:53'),
-(4, 2, 5, '<p>&#39;&#39;Suspendisse varius odio ac tellus ultricies placerat. Donec aliquet aliquet lorem ac imperdiet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras faucibus, metus in euismod venenatis, nisi magna consequat justo, nec commodo nibh nibh eget leo. Pellentesque tincidunt porttitor rutrum.&#39;&#39;</p>', NULL, NULL, '2023-03-13 03:57:51', '2023-03-13 03:57:51');
+INSERT INTO `text_contents` (`id`, `article_id`, `article_content_id`, `content`, `font`, `font_size`, `content_type`, `created_at`, `updated_at`) VALUES
+(3, 2, 4, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar ante sem, in tincidunt nisi lobortis eget. Aenean felis tellus, vulputate ac lectus sit amet, luctus euismod eros. Vivamus semper pulvinar sagittis. Ut eget metus in est lobortis pharetra ut sed tortor. Aliquam non tortor fermentum, congue orci non, vulputate nibh. Vestibulum sagittis mollis massa, vel varius velit ultrices sit amet. Vivamus feugiat volutpat enim. Maecenas ullamcorper nibh in lorem efficitur tincidunt. Pellentesque egestas iaculis pulvinar.</p>', 'sans-serif', 14, 'text', '2023-03-13 03:17:02', '2023-03-13 04:09:53'),
+(4, 2, 5, '<p>&#39;&#39;Suspendisse varius odio ac tellus ultricies placerat. Donec aliquet aliquet lorem ac imperdiet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras faucibus, metus in euismod venenatis, nisi magna consequat justo, nec commodo nibh nibh eget leo. Pellentesque tincidunt porttitor rutrum.&#39;&#39;</p>', NULL, NULL, 'quote', '2023-03-13 03:57:51', '2023-03-13 03:57:51'),
+(5, 2, 8, '<p>In the first step, we will download a new simple copy source code of Laravel App project</p>', 'Roboto', 25, 'subheadline', '2023-03-14 00:05:16', '2023-03-14 00:05:42'),
+(6, 2, 9, '[\"The feedback provided by a system is not very informative. It\\u2019s not clear how a system request or what exactly happens with the information.\",\"The feedback provided by a system is not very informative. It\\u2019s not clear how a system request or what exactly happens with the information.\",\"Notun add kora hoiche\"]', 'san', 20, 'list-content', '2023-03-14 01:04:43', '2023-03-14 03:54:45');
 
 -- --------------------------------------------------------
 
@@ -743,7 +754,7 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `article_contents`
 --
 ALTER TABLE `article_contents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `authors`
@@ -779,13 +790,13 @@ ALTER TABLE `hit_counters`
 -- AUTO_INCREMENT for table `image_contents`
 --
 ALTER TABLE `image_contents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `left_text_videos`
 --
 ALTER TABLE `left_text_videos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -833,13 +844,13 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `right_text_videos`
 --
 ALTER TABLE `right_text_videos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `text_contents`
 --
 ALTER TABLE `text_contents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`

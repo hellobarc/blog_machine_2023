@@ -16,6 +16,7 @@ class TextContent extends Model
         'content',
         'font',
         'font_size',
+        'content_type',
     ];
     public function article()
     {

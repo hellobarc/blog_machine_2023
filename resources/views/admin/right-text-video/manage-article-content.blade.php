@@ -51,19 +51,7 @@
 													<a href="{{route('admin.show.article-content', $rows->id)}}" class="btn btn-success btn-sm">Edit</a>
 													<a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal_{{$rows->id}}">Delete</a>
 													@if($rows->content_type == 'text')
-														<a href="{{route('admin.create.text-content', $rows->content_type)}}" class="btn btn-primary btn-sm">+ Add text</a>
-													@elseif($rows->content_type == 'quote')
-														<a href="{{route('admin.create.text-content', $rows->content_type)}}" class="btn btn-primary btn-sm">+ Add Quote</a>
-													@elseif($rows->content_type == 'image')
-														<a href="{{route('admin.create.image-content')}}" class="btn btn-primary btn-sm">+ Add Image</a>
-													@elseif($rows->content_type == 'subheadline')
-														<a href="{{route('admin.create.text-content', $rows->content_type)}}" class="btn btn-primary btn-sm">+ Add Sub Heading</a>
-													@elseif($rows->content_type == 'list-content')
-														<a href="{{route('admin.create.text-content', $rows->content_type)}}" class="btn btn-primary btn-sm">+ Add List Content</a>
-													@elseif($rows->content_type == 'left-text-video')
-														<a href="{{route('admin.create.left-text-video', $rows->content_type)}}" class="btn btn-primary btn-sm">+ Add List Content</a>
-													@elseif($rows->content_type == 'right-text-video')
-														<a href="{{route('admin.create.right-text-video', $rows->content_type)}}" class="btn btn-primary btn-sm">+ Add List Content</a>
+													<a href="{{route('admin.create.text-content')}}" class="btn btn-primary btn-sm">+ Add text</a>
 													@endif
 												</td>
 											</tr>

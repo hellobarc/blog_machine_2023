@@ -16,7 +16,17 @@
 										<div class="flex-grow-1 px-30 flex-grow-1 bg-img dask-bg bg-none-md" style="background-position: right bottom; background-size: auto 100%; background-image: url({{asset('ed_admin/images/svg-icon/color-svg/custom-1.svg')}})">
 											<div class="row">
 												<div class="col-12 col-xl-7">
-													<h3 class="fw-bolder">Edit Text Content</h3>
+													<h3 class="fw-bolder">
+														@if ($content_type == 'text')
+															Edit Text Content
+														@elseif($content_type == 'quote')
+															Edit Quote Content
+														@elseif($content_type == 'subheadline')
+															Edit Sub Heading Content
+														@elseif($content_type == 'list-content')
+															Edit List Content
+														@endif
+													</h3>
 												</div>
 											</div>
 										</div>
@@ -50,8 +60,49 @@
 													</select>
 												</div>
 												<div class="form-group">
-													<label for="content" class="mb-2">Content</label>
-													<textarea type="text" class="form-control" name="content" id="content">{{$data->content}}</textarea>
+													<label for="content" class="mb-2">
+														@if ($content_type == 'text')
+															Add Content
+														@elseif($content_type == 'quote')
+															Add Quote
+														@elseif($content_type == 'subheadline')
+															Add Subheading
+														@elseif($content_type == 'list-content')
+															Add list content
+														@endif
+													</label>
+													@if ($content_type == 'text' || $content_type == 'quote' || $content_type == 'subheadline')
+														<textarea type="text" class="form-control" name="content" id="content">{{$data->content}}</textarea>
+													@elseif($content_type == 'list-content')
+														@php
+															$decode_data = json_decode($data->content)	;
+														@endphp
+														
+														@foreach ($decode_data as $key=>$list)
+															<div class="row" id="demo_{{$key}}">
+																<div class="col-md-10">
+																	<div class="form-group">
+																		<input type="text" name="list_content[]" class="form-control" value="{{$list}}">
+																	</div>
+																</div>
+																<div class="col-md-2">
+																	<div class="mx-2 mt-2">
+																		<i class="fa-solid fa-trash text-danger" style="cursor: pointer" onclick="remove_item({{$key}})"></i>
+																	</div>
+																</div>
+															</div>
+														@endforeach
+														<div class="d-flex justify-content-start mb-2">
+															<a href="#" class="btn btn-success btn-sm" onclick="myFunction()"><i class="fa-solid fa-plus"></i></i> Add List</a>
+														</div>
+														<div id="add-option">
+															<div class="d-flex justify-content-start">
+																{{-- <div class="form-group">
+																	<input type="text" name="list_content[]" class="form-control" placeholder="Write list content" width="100">
+																</div> --}}
+															</div>
+														</div>
+													@endif
 												</div>
 												<div class="form-group">
 													<label for="font" class="mb-2">Font Style</label>
@@ -76,3 +127,9 @@
   	</div>
   <!-- /.content-wrapper -->
 @endsection
+
+<script
+  src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+  integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
+  crossorigin="anonymous"></script>
+  <script src="{{asset('js/admin/add-option.js')}}"></script>

@@ -14,6 +14,13 @@ class ImageContent extends Model
         'article_id',
         'article_content_id',
         'image',
-       
     ];
+    public function article()
+    {
+        return $this->belongsTo(Article::class, 'article_id');
+    }
+    public function articleContent()
+    {
+        return $this->belongsTo(ArticleContent::class, 'article_content_id');
+    }
 }

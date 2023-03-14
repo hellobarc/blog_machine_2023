@@ -41,7 +41,8 @@ class ImageContentController extends Controller
     {
         $articles = Article::all();
         $articleContents = ArticleContent::all();
-        return view('admin.image-content.create-image-content', compact('articles', 'articleContents'));
+        $imageContents = ImageContent::orderBy('id', 'DESC')->with('article', 'articleContent')->get();
+        return view('admin.image-content.create-image-content', compact('articles', 'articleContents', 'imageContents'));
     }
 
     public function store(SaveImageContentRequest $request)
@@ -56,37 +57,36 @@ class ImageContentController extends Controller
         $imageContentDetails = $request->only([
             'article_id',
             'article_content_id',
-            // 'content',
+            
         ]);
         $imageContentDetails['image'] = $img;
         $storeData = $this->imageContentRepository->create($imageContentDetails);
         return redirect()->route('admin.create.image-content')->with('success', 'Image Content Created Successfully.');
     }
 
-    public function show(Request $request): JsonResponse
+    public function show(Request $request)
     {
         $imageContectId = $request->route('id');
 
-
-        return response()->json([
-            'data' => $this->imageContentRepository->getById($imageContectId)
-        ]);
+        $data = $this->imageContentRepository->getById($imageContectId);
+        $articles = Article::all();
+        $articleContents = ArticleContent::all();
+        return view('admin.image-content.edit-image-content', compact('data', 'articles', 'articleContents'));
     }
 
-    public function update(Request $request): JsonResponse
+    public function update(Request $request)
     {
         $imageContectId = $request->route('id');
 
         $find_id = ImageContent::where('id', $imageContectId)->first();
-        if (File::exists('uploads/article_content/original_thumbnail/'.$find_id->content) && File::exists('uploads/article_content/thumbnail/'.$find_id->content)) {
-            File::delete('uploads/article_content/original_thumbnail/'.$find_id->content);
-            File::delete('uploads/article_content/thumbnail/'.$find_id->content);
+        if ( File::exists('uploads/image_content/'.$find_id->image)) {
+            File::delete('uploads/image_content/'.$find_id->image);
         }
 
-        $image = $request->file('content');
+        $image = $request->file('image');
         $img = time().'.'.$image->getClientOriginalExtension();
-        $location = public_path('uploads/article_content/original_thumbnail/' .$img);
-        $thumbnail = public_path('uploads/article_content/thumbnail/' .$img);
+        $location = public_path('uploads/image_content/' .$img);
+        $thumbnail = public_path('uploads/image_content/' .$img);
         $imgFile = Image::make($image)->save($location);
 
 
@@ -97,36 +97,28 @@ class ImageContentController extends Controller
         $textContentDetails = $request->only([
             'article_id',
             'article_content_id',
-            // 'content',
         ]);
-        $textContentDetails['content'] = $img;
+        $textContentDetails['image'] = $img;
 
-        return response()->json([
-            'status' => "success",
-            'data' => $this->imageContentRepository->update($imageContectId, $textContentDetails)
-        ]);
+        $data = $this->imageContentRepository->update($imageContectId, $textContentDetails);
+        return redirect()->route('admin.create.image-content')->with('success', 'Image Content Update Successfully.');
     }
 
-    public function destroy(Request $request): JsonResponse
+    public function destroy(Request $request)
     {
         $imageContectId = $request->route('id');
 
         $find_id = ImageContent::where('id', $imageContectId)->first();
         if(!is_null($find_id))
     	{
-    		if (File::exists('uploads/article_content/original_thumbnail/'.$find_id->content) && File::exists('uploads/article_content/thumbnail/'.$find_id->content)) {
-                File::delete('uploads/article_content/original_thumbnail/'.$find_id->content);
-                File::delete('uploads/article_content/thumbnail/'.$find_id->content);
+    		if (File::exists('uploads/image_content/'.$find_id->image)) {
+                File::delete('uploads/image_content/'.$find_id->image);
             }
         }
 
         $this->imageContentRepository->delete($imageContectId);
 
-
-        // return response()->json(null, Response::HTTP_NO_CONTENT);
-        return response()->json([
-            'status' => "success deleted",
-        ]);
+        return redirect()->route('admin.create.image-content')->with('success', 'Image Content Deleted Successfully.');
     }
     public function imageContentByArticleContentId(Request $request): JsonResponse
     {

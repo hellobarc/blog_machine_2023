@@ -17,7 +17,7 @@ class CreateArticleContentsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('article_id');
             $table->text('content_subtitle')->nullable();
-            $table->enum('content_type', ['text','quote','image','subheadline','intro']);
+            $table->enum('content_type', ['text','quote','image','subheadline','intro', 'list-content', 'left-text-video', 'right-text-video']);
             $table->enum('layout', ['full_width','left','right','center']);
             $table->smallInteger('layout_width');
             $table->timestamps();

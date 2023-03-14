@@ -11,6 +11,8 @@ use App\Http\Controllers\{
                             ArticleContentController,
                             TextContentController,
                             ImageContentController,
+                            LeftTextVideoController,
+                            RightTextVideoController,
                         };
 
 use App\Http\Controllers\Auth\LoginController;
@@ -88,6 +90,22 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
         Route::get('/show-image-content/{id}','show')->name('admin.show.image-content');
         Route::post('/update-image-content/{id}','update')->name('admin.update.image-content');
         Route::get('/destroy-image-content/{id}','destroy')->name('admin.destory.image-content');
+    });
+    Route::controller(LeftTextVideoController::class)->group(function () {
+        Route::get('/manage-left-text-video','index')->name('admin.left-text-video');
+        Route::get('/create-left-text-video','create')->name('admin.create.left-text-video');
+        Route::post('/store-left-text-video','store')->name('admin.store.left-text-video');
+        Route::get('/show-left-text-video/{id}','show')->name('admin.show.left-text-video');
+        Route::post('/update-left-text-video/{id}','update')->name('admin.update.left-text-video');
+        Route::get('/destroy-left-text-video/{id}','destroy')->name('admin.destory.left-text-video');
+    });
+    Route::controller(RightTextVideoController::class)->group(function () {
+        Route::get('/manage-right-text-video','index')->name('admin.right-text-video');
+        Route::get('/create-right-text-video','create')->name('admin.create.right-text-video');
+        Route::post('/store-right-text-video','store')->name('admin.store.right-text-video');
+        Route::get('/show-right-text-video/{id}','show')->name('admin.show.right-text-video');
+        Route::post('/update-right-text-video/{id}','update')->name('admin.update.right-text-video');
+        Route::get('/destroy-right-text-video/{id}','destroy')->name('admin.destory.right-text-video');
     });
 });
 

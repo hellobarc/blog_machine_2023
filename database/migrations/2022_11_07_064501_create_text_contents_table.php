@@ -20,6 +20,7 @@ class CreateTextContentsTable extends Migration
             $table->longText('content');
             $table->string('font')->nullable();
             $table->smallInteger('font_size')->nullable();
+            $table->string('content_type');
             $table->timestamps();
         });
     }

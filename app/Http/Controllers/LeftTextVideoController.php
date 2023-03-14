@@ -6,7 +6,11 @@ use App\Http\Requests\SaveLeftTextVideo;
 use App\Interfaces\LeftTextVideoRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
-use App\Models\ArticleContent;
+use App\Models\{
+                    ArticleContent,
+                    LeftTextVideo,
+                    Article,
+                };
 
 class LeftTextVideoController extends Controller
 {
@@ -25,39 +29,43 @@ class LeftTextVideoController extends Controller
             'data' => $getData,
         ]);
     }
+    public function create()
+    {
+        $articles = Article::all();
+        $articleContents = ArticleContent::all();
+        $leftTextvideos = LeftTextVideo::orderBy('id', 'DESC')->with('article', 'articleContent')->get();
+        return view('admin.left-text-video.create-left-text-video', compact('articles', 'articleContents', 'leftTextvideos'));
+    }
 
-    public function store(SaveleftTextVideo $request): JsonResponse 
+    public function store(SaveleftTextVideo $request)
     {
         $articleContentDetails = $request->only([
+            'article_id',
             'article_content_id',
             'content_title',
             'content_text',
             'video_url',
         ]);
-
-        return response()->json(
-            [
-                'status' => "success",
-                'data' => $this->leftTextVideoRepository->create($articleContentDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+        $storeData = $this->leftTextVideoRepository->create($articleContentDetails);
+        return redirect()->route('admin.create.left-text-video')->with('success', 'Left Text Video Store Successfully.');
     }
 
-    public function show(Request $request): JsonResponse 
+    public function show(Request $request) 
     {
         $articleId = $request->route('id');
 
-        return response()->json([
-            'data' => $this->leftTextVideoRepository->getById($articleId)
-        ]);
+        $data = $this->leftTextVideoRepository->getById($articleId);
+        $articles = Article::all();
+        $articleContents = ArticleContent::all();
+        return view('admin.left-text-video.edit-left-text-video', compact('data', 'articles', 'articleContents'));
     }
 
-    public function update(Request $request): JsonResponse 
+    public function update(Request $request) 
     {
         $articleId = $request->route('id');
         
         $articleContentDetails = $request->only([
+            'article_id',
             'article_content_id',
             'content_title',
             'content_text',
@@ -66,20 +74,14 @@ class LeftTextVideoController extends Controller
 
         $update = $this->leftTextVideoRepository->update($articleId, $articleContentDetails);
     
-        return response()->json([
-            'status' => "success",
-            'data' =>  $update 
-        ]);
+        return redirect()->route('admin.create.left-text-video')->with('success', 'Left Text Video Update Successfully.');
     }
 
-    public function destroy(Request $request): JsonResponse 
+    public function destroy(Request $request) 
     {
         $articleId = $request->route('id');
        
         $this->leftTextVideoRepository->delete($articleId);
-        // return response()->json(null, Response::HTTP_NO_CONTENT);
-        return response()->json([
-            'status' => "success deleted",
-        ]);
+        return redirect()->route('admin.create.left-text-video')->with('success', 'Left Text Video Deleted Successfully.');
     }
 }

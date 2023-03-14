@@ -46,20 +46,31 @@ class TextContentController extends Controller
     }
     public function store(SaveTextContentRequest $request) 
     {
+        
         $textContentDetails = $request->only([
             'article_id',
             'article_content_id',
-            'content',
             'font',
             'font_size',
         ]);
+       
+
         $content_type= $request->content_type;
+
+    
+        if($content_type == 'text' || $content_type == 'quote' || $content_type == 'subheadline'){
+            $textContentDetails['content'] = $request->content;
+        }elseif($content_type == 'list-content'){
+            $textContentDetails['content'] = json_encode($request->list_content);
+        }
+        $textContentDetails['content_type'] = $content_type;
         $storeData = $this->textContentRepository->create($textContentDetails);
         return redirect()->route('admin.create.text-content', $content_type)->with('success', 'Text Content Created Successfully.');
     }
 
-    public function show(Request $request, $content_type) 
+    public function show(Request $request) 
     {
+        $content_type = $request->route('content_type');
         $textContectId = $request->route('id');
 
         $data = $this->textContentRepository->getById($textContectId);
@@ -70,16 +81,23 @@ class TextContentController extends Controller
 
     public function update(Request $request) 
     {
+        
         $textContectId = $request->route('id');
         
         $textContentDetails = $request->only([
             'article_id',
             'article_content_id',
-            'content',
             'font',
             'font_size',
         ]);
         $content_type= $request->content_type;
+        
+        if($content_type == 'text' || $content_type == 'quote' || $content_type == 'subheadline'){
+            $textContentDetails['content'] = $request->content;
+        }elseif($content_type == 'list-content'){
+            $textContentDetails['content'] = json_encode($request->list_content);
+        }
+        $textContentDetails['content_type'] = $content_type;
         $updateData = $this->textContentRepository->update($textContectId, $textContentDetails);
         return redirect()->route('admin.create.text-content', $content_type)->with('success', 'Text Content Update Successfully.');
     }

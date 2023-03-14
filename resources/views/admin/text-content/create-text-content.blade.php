@@ -21,6 +21,10 @@
 															Create Text Content
 														@elseif($content_type == 'quote')
 															Create Quote Content
+														@elseif($content_type == 'subheadline')
+															Create Sub Heading Content
+														@elseif($content_type == 'list-content')
+															Create List Content
 														@endif
 														
 													</h3>
@@ -62,9 +66,27 @@
 															Add Content
 														@elseif($content_type == 'quote')
 															Add Quote
+														@elseif($content_type == 'subheadline')
+															Add Subheading
+														@elseif($content_type == 'list-content')
+															Add list content
 														@endif
 													</label>
-													<textarea type="text" class="form-control" name="content" id="content"></textarea>
+													@if ($content_type == 'text' || $content_type == 'quote' || $content_type == 'subheadline')
+														<textarea type="text" class="form-control" name="content" id="content"></textarea>
+													@elseif($content_type == 'list-content')
+														<div class="d-flex justify-content-start mb-2">
+															<a href="#" class="btn btn-success btn-sm" onclick="myFunction()"><i class="fa-solid fa-plus"></i></i> Add List</a>
+														</div>
+														<div id="add-option">
+															<div class="">
+																<div class="form-group">
+																	<input type="text" name="list_content[]" class="form-control" placeholder="Write list content" width="100">
+																</div>
+															</div>
+														</div>
+													@endif
+													
 												</div>
 												<div class="form-group">
 													<label for="font" class="mb-2">Font Style</label>
@@ -117,7 +139,7 @@
 															@endif
 														</td>
 														<td>
-															<a href="{{route('admin.show.text-content', ['id'=>$textContent->id, 'content_type'=>$content_type])}}" class="btn btn-success btn-sm">Edit</a>
+															<a href="{{route('admin.show.text-content', ['id'=>$textContent->id, 'content_type'=>$textContent->content_type])}}" class="btn btn-success btn-sm">Edit</a>
 															<a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal_{{$textContent->id}}">Delete</a>
 														</td>
 													</tr>
@@ -153,3 +175,4 @@
   	</div>
   <!-- /.content-wrapper -->
 @endsection
+<script src="{{asset('js/admin/add-option.js')}}"></script>

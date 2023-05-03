@@ -1,0 +1,11 @@
+
+
+$.ajax({
+			type: "POST",
+			url: "{{route('quiz.submission')}}",
+			data:$('.fillBlankQuizSubmisstion').serialize(),"_token": "{{ csrf_token() }}",
+            headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+   },
+			success:function(){console.log(data)}
+		})

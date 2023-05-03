@@ -1,0 +1,32 @@
+<form class="radioQuizSubmisstion" method="POST">
+                                                                    <input type="hidden" name="quiz_id_radio" value="{{$post['quizId']}}">
+                                                                    <input type="hidden" name="quiz_content_id_radio" value="{{$post['quizContentId']}}">
+                                                                    <input type="hidden" name="question_type_radio" value="{{$post['quizQuestionType']}}">
+                                                                    <input type="hidden" name="quiz_type_radio"  value="{{$post['quizType']}}">
+<button type="submit" class="btn btn-success btn-lg px-4 fw-bold mt-4">Check</button>
+                                                                </form>
+
+
+<form class="multipleChoiceFormSubmission" method="POST">
+                                                                    <input type="hidden" name="quiz_id_multiple_choice" value="{{$post['quizId']}}">
+                                                                    <input type="hidden" name="quiz_content_id_multiple_choice" value="{{$post['quizContentId']}}">
+                                                                    <input type="hidden" name="question_type_multiple_choice" value="{{$post['quizQuestionType']}}">
+                                                                    <input type="hidden" name="quiz_type_multiple_choice"  value="{{$post['quizType']}}">
+<button type="submit" class="btn btn-success btn-lg px-4 fw-bold mt-4">Check</button>
+                                                                </form>
+
+<form class="drop_down_QuizSubmisstion"  method="post">
+                                                                <input type="hidden" name="quiz_id_drop_down" value="{{$post['quizId']}}">
+                                                                <input type="hidden" name="quiz_content_id_drop_down" value="{{$post['quizContentId']}}">
+                                                                <input type="hidden" name="question_type_drop_down" value="{{$post['quizQuestionType']}}">
+                                                                <input type="hidden" name="quiz_type_drop_down" value="{{$post['quizType']}}">
+<button type="submit" class="btn btn-success btn-lg px-4 fw-bold mt-4">Check</button>
+                                                            </form>
+
+<form class="trueFalseQuizSubmisstion"  method="post">
+                                                                <input type="hidden" name="quiz_id_true_false" value="{{$post['quizId']}}">
+                                                                <input type="hidden" name="quiz_content_id_true_false" value="{{$post['quizContentId']}}">
+                                                                <input type="hidden" name="question_type_true_false" value="{{$post['quizQuestionType']}}">
+                                                                <input type="hidden" name="quiz_type_true_false" value="{{$post['quizType']}}">
+<button type="submit" class="btn btn-success btn-lg px-4 fw-bold mt-4">Check</button>
+                                                            </form>

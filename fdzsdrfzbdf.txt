@@ -1,0 +1,29 @@
+ let comment_form =``;
+                    comment_form +=`<form class="contact-form-box" id="commentSubmitForm">
+                                        <input type="hidden" name="article_id" id="article_id" value="{{$article_id}}">
+                                        <div class="row gutters-15">
+                                            <div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
+                                                Thank you for getting in touch! 
+                                            </div>
+                                            <div class="col-12 form-group">
+                                                <textarea placeholder="Write your comments ..." class="textarea form-control"
+                                                    name="message" id="message" rows="8" cols="20" data-error="Message field is required"
+                                                    required></textarea>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                            
+                                            <div class="col-12 form-group">
+                                                <button type="submit" class="item-btn">POST COMMENT</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-response"></div>
+                                    </form>`;
+                    $("#comment_login_box").html(comment_form);
+
+                    var all_comment = "{{$comments}}";
+                    console.log(all_comment);
+                    let reply_form = ``;
+                    $.each(all_comment.data, function(i, item) {
+                        reply_form += `<button class="item-btn" onclick="replyButton(${item.id})" style="border:none;">Reply</button>`;
+                        });
+                        $("#reply_box").html(reply_form);

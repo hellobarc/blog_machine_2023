@@ -1,0 +1,28 @@
+.inner-page-banner .item-social
+
+@foreach ($detail_post as $post)
+                <div class="single-blog-banner-layout1">
+                    <div class="banner-img">
+                        <img src="{{asset('uploads/article/thumbnail/'.$post->thumbnail)}}" alt="blog">
+                    </div>
+                    <div class="banner-content">
+                        <div class="container">
+                            <ul class="entry-meta meta-color-light2">
+                                <li><i class="fas fa-tag"></i>{{Helper::tag_name($post->tags)}}</li>
+                                <li><i class="fas fa-calendar-alt"></i>{{Helper::integerDateToString($post->custom_date)}}</li>
+                                <li><i class="fas fa-user"></i>BY <a href="#">{{$post->author->author_name}}</a></li>
+                                <li><i class="far fa-clock"></i>{{$post->read_minutes}} Mins Read</li>
+                            </ul>
+                            <h2 class="item-title">{{$post->page_title}}</h2>
+                            
+                            <ul class="response-area">
+                                <li><a href="#"><i class="far fa-comment"></i>{{Helper::count_comments($post->id)}}</a></li>
+                                <li><a href="#"><i class="far fa-eye"></i>{{Helper::count_views($post->id)}}</a></li>
+                                <li><a href="#"><i class="far fa-heart"></i>{{Helper::count_likes($post->id)}}</a></li>
+                                <li><a href="#"><i class="fas fa-share"></i>302</a></li>
+                            </ul>
+                        </div>
+                        @include('admin.templetes.flash-message')
+                    </div>
+                </div>
+            @endforeach

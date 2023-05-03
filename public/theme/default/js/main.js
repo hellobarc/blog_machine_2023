@@ -72,7 +72,7 @@
     --------------------------------------*/
     if ($.fn.meanmenu) {
         $('nav#dropdown').meanmenu({
-            siteLogo: "<div class='mobile-menu-nav-back'><a class='logo-mobile' href='{{route('home_page')}}'><img src='https://quiz.hellobarc.com/frontend/image/logo.png' alt='logo' class='img-fluid' style='width:10%;'/></a></div>"
+            siteLogo: "<div class='mobile-menu-nav-back'><a class='logo-mobile' href='http://ielts.live/'><img src='https://ielts.live/blog/images/logo-blue.png' alt='logo' class='img-fluid' style='width:10%;'/></a></div>"
         });
     }
 

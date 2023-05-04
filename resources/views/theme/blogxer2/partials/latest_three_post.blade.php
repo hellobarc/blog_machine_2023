@@ -16,7 +16,7 @@
 				</div>
 			</div>
 		</div>
-@endforeach
+	@endforeach
 @endempty
 
 

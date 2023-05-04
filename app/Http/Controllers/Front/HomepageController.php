@@ -104,7 +104,7 @@ class HomepageController extends Controller
         $categoriesArticle = $this->articleRepository->categoryArticle($id);
         $latestCategoryArticle = $this->articleRepository->latestCategoryArticle($id);
         $singleCategoryPopularPost = $this->articleRepository->singleCategoryPopularPost();
-        $categories = Category::inRandomOrder()->take(7)->get();
+        $categories = Category::all();
         $tags = Tags::inRandomOrder()->take(17)->get();
         
         return view('theme.'.$this->theme_name.'.pages.category')->with(['meta'=>$meta,'category'=>$category,'featured_post'=>$featured_post,'premium_post'=>$premium_post,'popular_post'=>$popular_post,'latest_post'=>$latest_post,'paginate_post'=>$paginate_post, 'categoriesArticle'=>$categoriesArticle, 'latestCategoryArticle'=>$latestCategoryArticle, 'singleCategoryPopularPost'=>$singleCategoryPopularPost, 'categories'=>$categories, 'allTags'=>$tags]);
@@ -136,7 +136,7 @@ class HomepageController extends Controller
         $latestCategoryArticle = $this->articleRepository->latestCategoryArticle($id);
         $singleCategoryPopularPost = $this->articleRepository->singleCategoryPopularPost();
         $findTagArticle = $this->articleRepository->findTagArticle($id);
-        $categories = Category::with('articles')->inRandomOrder()->take(7)->get();
+        $categories = Category::with('articles')->get();
         $tags = Tags::inRandomOrder()->take(17)->get();
 
         return view('theme.'.$this->theme_name.'.pages.tags')->with(['meta'=>$meta,'tag'=>$tag,'featured_post'=>$featured_post,'premium_post'=>$premium_post,'popular_post'=>$popular_post,'latest_post'=>$latest_post,'paginate_post'=>$paginate_post, 'categoriesArticle'=>$categoriesArticle, 'latestCategoryArticle'=>$latestCategoryArticle, 'singleCategoryPopularPost'=>$singleCategoryPopularPost, 'categories'=>$categories, 'allTags'=>$tags, 'findTagArticle'=>$findTagArticle]);
@@ -169,7 +169,7 @@ class HomepageController extends Controller
         $paginate_post = $this->articleRepository->getPaginate(3);
         $search_article = $this->articleRepository->searchPost($keyword);
         $singleCategoryPopularPost = $this->articleRepository->singleCategoryPopularPost();
-        $categories = Category::with('articles')->inRandomOrder()->take(7)->get();
+        $categories = Category::with('articles')->get();
         $tags = Tags::inRandomOrder()->take(17)->get();
         // return view('theme.'.$this->theme_name.'.pages.search_page')->with(['meta'=>$meta,'category'=>$category,'featured_post'=>$featured_post,'premium_post'=>$premium_post,'popular_post'=>$popular_post,'latest_post'=>$latest_post,'paginate_post'=>$paginate_post, 'search_article'=>$search_article] );
         return view('theme.'.$this->theme_name.'.pages.search_page')->with(['search_keyword'=>$keyword,'premium_post'=>$premium_post,'popular_post'=>$popular_post,'latest_post'=>$latest_post,'paginate_post'=>$paginate_post, 'search_article'=>$search_article, 'singleCategoryPopularPost'=>$singleCategoryPopularPost, 'categories'=>$categories, 'allTags'=>$tags]);
@@ -327,7 +327,7 @@ class HomepageController extends Controller
         }
         
         //dd($data);
-        $categories = Category::with('articles')->inRandomOrder()->take(6)->get();
+        $categories = Category::with('articles')->get();
         $comments = Comment::where('article_id', $id)->where('status', 'approved')->with('user')->paginate(2);
         $likes = LikeArticle::where('article_id', $id)->first();
         $tags = Tags::inRandomOrder()->take(17)->get();

@@ -196,8 +196,8 @@ Auth::routes(['register' => false,'login' => false]);
 Route::get('/admin',[LoginController::class,'showAdminLoginForm'])->name('admin.login-view');
 Route::post('/admin',[LoginController::class,'adminLogin'])->name('admin.login');
 
-Route::get('/admin/register',[RegisterController::class,'showAdminRegisterForm'])->name('admin.register-view');
-Route::post('/admin/register',[RegisterController::class,'createAdmin'])->name('admin.register');
+// Route::get('/admin/register',[RegisterController::class,'showAdminRegisterForm'])->name('admin.register-view');
+// Route::post('/admin/register',[RegisterController::class,'createAdmin'])->name('admin.register');
 
 Route::get('/login/user',[LoginController::class,'showCustomLoginForm'])->name('custom.login-view');
 Route::post('/login/user',[LoginController::class,'customLogin'])->name('custom.login');

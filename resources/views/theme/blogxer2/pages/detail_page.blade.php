@@ -37,6 +37,8 @@
         <div class="progress-bar" id="myBar"></div>
     </div>
 </div>
+<button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" id="back_to_top" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+{{-- <a id="back_to_top">Top</a> --}}
 <!-- Inne Page Banner Area Start Here -->
 <section class="inner-page-banner bg-common">
     <div class="container">
@@ -4030,6 +4032,7 @@
         document.getElementById("myBar").style.width = scrolled + "%";
     }
 </script>
+
 
 {{-- login and registration form show hide --}}
 <script>

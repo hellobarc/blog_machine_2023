@@ -42,6 +42,8 @@
 
         <section class="blog-wrap-layout1">
             <div class="container">
+                <h2 class="item-title mb-0">LATEST POSTS</h2>
+                <hr>
                 <div class="row gutters-40">
                     @include('theme/'.env('SITE_THEME').'/partials/latest_three_post')
                 </div>
@@ -56,6 +58,8 @@
                     <div class="col-lg-8">
                         {{-- top rating post start --}}
                         @if(!empty($topLikesPost))
+                            <h2 class="item-title mb-0">TOP LIKED POST</h2>
+                            <hr>
                             <div class="blog-box-layout1 text-left">
                                 <div class="item-img">
                                     <a href="{{route('detail_page',['id'=>$topLikesPost->id,'slug'=>Str::slug($topLikesPost->title,'-')])}}"><img src="{{asset('uploads/article/thumbnail/'.$topLikesPost->thumbnail)}}" alt="blog"></a>
@@ -122,6 +126,8 @@
                             </div>
                         </div> --}}
                         {{-- all article with paginate section start --}}
+                        <h2 class="item-title mb-0">ALL POSTS</h2>
+                        <hr>
                         <div class="row gutters-40">
                             @foreach ($paginate_post as $row)
                                 <div class="col-md-6">

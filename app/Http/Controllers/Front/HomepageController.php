@@ -59,7 +59,7 @@ class HomepageController extends Controller
         $latestSingleFeaturePost = $this->articleRepository->latestSingleFeaturePost();
         $randomThreeFeaturePost = $this->articleRepository->randomThreeFeaturePost();
         $topLikesPost = $this->articleRepository->topRatingPost();
-        $categories = Category::with('articles')->inRandomOrder()->take(6)->get();
+        $categories = Category::with('articles')->take(8)->get();
         return view('theme.'.$this->theme_name.'.pages.home')->with(['meta'=>$meta,'featured_post'=>$featured_post,'trending_post'=>$trending_post,'popular_post'=>$popular_post,'latest_post'=>$latest_post,'paginate_post'=>$paginate_post, 'latestSingleFeaturePost'=>$latestSingleFeaturePost, 'randomThreeFeaturePost'=>$randomThreeFeaturePost, 'categories'=>$categories, 'topLikesPost'=>$topLikesPost] );
     }
 

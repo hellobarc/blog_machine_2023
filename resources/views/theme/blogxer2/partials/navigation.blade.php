@@ -6,12 +6,9 @@
                               <nav id="dropdown" class="template-main-menu">
 								<ul>
                                     <li>
-                                        {{-- <a href="{{route('home_page')}}">HOME</a> --}}
-                                        <a href="https://ielts.live/">HOME</a>
+                                        <a href="{{route('home_page')}}">HOME</a>
+                                        {{-- <a href="https://ielts.live/">HOME</a> --}}
                                     </li>
-									<li>
-										<a href="{{route('about')}}">ABOUT</a>
-									</li>
 									 <li>
 										<a href="#">CATEGORIES</a>
 										<ul class="dropdown-menu-col-1">
@@ -23,7 +20,7 @@
 											@endforeach
 										</ul>
 									</li>
-									<li>
+									{{-- <li>
 										<a href="#">Products</a>
 										<ul class="dropdown-menu-col-1">
 											<li>
@@ -36,10 +33,13 @@
 												<a href="single-blog3.html">Product 3</a>
 											</li>
 										</ul>
-									</li>
+									</li> --}}
 
 									<li>
 										<a href="{{route('contact')}}">CONTACT</a>
+									</li>
+									<li>
+										<a href="{{route('about')}}">ABOUT</a>
 									</li>
 									 <li>
 										@if(Auth::guard('customLogin')->user())

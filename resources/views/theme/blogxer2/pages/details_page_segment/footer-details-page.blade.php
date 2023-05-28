@@ -1,3 +1,27 @@
+{{-- FAQ section start --}}
+@if(!empty($all_article_faq))
+ <h1 class="mt-4">Article FAQ</h1>
+<div class="custom-collapse">
+    <div id="accordion">
+        @foreach ($all_article_faq as $faq)
+            <div class="card" style="border-radius:5px;">
+                <div class="card-header my-4" id="heading_{{$faq->id}}">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{$faq->id}}" aria-expanded="true" aria-controls="collapse_{{$faq->id}}" style="font-size: 20px !important">
+                        {{$faq->faq_question}} 
+                    </button>
+                </div>
+        
+                <div id="collapse_{{$faq->id}}" class="collapse" aria-labelledby="heading_{{$faq->id}}" data-parent="#accordion">
+                    <div class="card-body">
+                        {!! $faq->faq_answer !!}
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
+@endif
+{{-- FAQ section end --}}
 {{-- tag section start --}}
 <div class="blog-entry-meta">
     <ul>

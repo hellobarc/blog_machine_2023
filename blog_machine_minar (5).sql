@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 01:01 PM
+-- Generation Time: May 28, 2023 at 01:35 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -82,11 +82,12 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `title`, `category_id`, `slug`, `meta_keyword`, `meta_description`, `page_title`, `thumbnail`, `custom_date`, `author_id`, `is_featured`, `is_trending`, `tags`, `read_minutes`, `references`, `co_authors`, `secondary_categories`, `hits`, `smily_yes`, `smily_no`, `created_at`, `updated_at`) VALUES
-(6, 'IELTS Online Mock Test', '5', 'ielts-online-mock-test', 'IELTS Online Mock Test, Online Mock Test, Mock Test', 'IELTS preparation can be challenging, but there are several online resources available that can help individuals prepare for the exam, including free online mock tests that use a computer-based system.', 'Take your IELTS preparation to the next level with our IELTS Online Mock Test', '1681812923.webp', '2023-04-11', 5, '1', '1', '2', 20, NULL, 'null', 'null', NULL, NULL, NULL, '2023-04-11 04:21:38', '2023-04-18 04:15:23'),
+(6, 'IELTS Online Mock Test', '11', 'ielts-online-mock-test', 'IELTS Online Mock Test, Online Mock Test, Mock Test', 'IELTS preparation can be challenging, but there are several online resources available that can help individuals prepare for the exam, including free online mock tests that use a computer-based system.', 'Take your IELTS preparation to the next level with our IELTS Online Mock Test', '1681812923.webp', '2023-04-11', 5, '1', '1', '2', 20, NULL, 'null', 'null', NULL, NULL, NULL, '2023-04-11 04:21:38', '2023-04-18 04:15:23'),
 (7, 'IELTS Listening Guide', '4', 'ielts-listening-guide', 'IELTS listening test, Listening test', 'Struggling with the IELTS Listening Test as a non-native speaker? You\'re not alone! As a non-native speaker myself, I understand that the IELTS Listening test can be a daunting experience for us.', 'Listen Up! A Comprehensive Guide to Preparing for the IELTS Listening Test', '1682835208.webp', '2023-04-27', 8, '1', '1', '3', 15, NULL, 'null', 'null', NULL, NULL, NULL, '2023-04-27 00:13:15', '2023-04-30 00:13:29'),
 (8, 'Multiple-choice mayhem: IELTS listening test', '4', 'multiple-choice-mayhem-ielts-listening-test', 'Multiple-choice mayhem, IELTS listening test, Listening test', 'Struggling to Crack MCQs in IELTS Listening test? Make Mistakes No More! To nail the MCQ section, first, you need to select the right plan of action. And to do that you have to develop experience through taking practice tests', 'Mastering the Multiple-choice mayhem: IELTS listening test', '1682851873.webp', '2023-04-27', 8, '1', '1', '3', 15, NULL, 'null', 'null', NULL, NULL, NULL, '2023-04-27 03:01:02', '2023-04-30 04:51:13'),
 (9, 'Completion Questions', '4', 'completion-questions', 'Form Completion Questions, Sentence Completion', 'Form completion questions are a type of question commonly found in the IELTS Listening test. In this type of question, you will be given an incomplete form, such as a registration form, application form, or survey form, and you will be asked to complete the missing information by listening to a recording.', 'What are form completion questions?', '1682852411.webp', '2023-04-28', 8, '1', '1', '3', 15, NULL, 'null', 'null', NULL, NULL, NULL, '2023-04-27 23:13:00', '2023-04-30 05:00:12'),
-(10, 'Cracking the IELTS Reading Code', '9', 'cracking-the-ielts-reading-code', 'Insider Tips, Strategies, Reading Code', 'Ready to conquer the IELTS reading test and show off your English proficiency? Look no further! This blog post is your ultimate guide to acing the test and achieving your dream scores. Whether you\'re a non-native speaker or simply looking to improve your reading skills, these valuable tips and strategies will help you succeed.', 'Cracking the IELTS Reading Code: Insider Tips and Strategies for a High Score', '1682848200.webp', '2023-04-28', 8, '1', '1', '4', 20, NULL, 'null', 'null', NULL, NULL, NULL, '2023-04-27 23:51:31', '2023-04-30 03:50:00');
+(10, 'Cracking the IELTS Reading Code', '6', 'cracking-the-ielts-reading-code', 'Insider Tips, Strategies, Reading Code', 'Ready to conquer the IELTS reading test and show off your English proficiency? Look no further! This blog post is your ultimate guide to acing the test and achieving your dream scores. Whether you\'re a non-native speaker or simply looking to improve your reading skills, these valuable tips and strategies will help you succeed.', 'Cracking the IELTS Reading Code: Insider Tips and Strategies for a High Score', '1682848200.webp', '2023-04-28', 8, '1', '1', '4', 20, NULL, 'null', 'null', NULL, NULL, NULL, '2023-04-27 23:51:31', '2023-04-30 03:50:00'),
+(11, 'Mastering IELTS Writing Task 1', '7', 'mastering-ielts-writing-task-1', 'IELTS Writing Task 1', 'IELTS Writing Task 1 can feel like a voyage into unknown territory, especially when confronted with complex graphs and data representations. We understand the common challenges and uncertainties that many candidates face during this crucial stage of the exam.', 'Mastering IELTS Writing Task 1: Tips and Strategies for Success', '1685249377.png', '2023-05-28', 8, '1', '1', '5', 15, NULL, 'null', 'null', NULL, NULL, NULL, '2023-05-27 22:49:38', '2023-05-27 22:49:38');
 
 -- --------------------------------------------------------
 
@@ -202,7 +203,50 @@ INSERT INTO `article_contents` (`id`, `article_id`, `content_subtitle`, `content
 (121, 10, 'subheadline', 'subheadline', 'full_width', NULL, '2023-04-28 03:16:18', '2023-04-28 03:16:18'),
 (123, 10, 'text', 'text', 'full_width', NULL, '2023-04-28 03:17:31', '2023-04-28 03:17:31'),
 (124, 10, 'subheadline', 'subheadline', 'full_width', NULL, '2023-04-28 03:18:24', '2023-04-28 03:18:24'),
-(125, 10, 'text', 'text', 'full_width', NULL, '2023-04-28 03:19:00', '2023-04-28 03:19:00');
+(125, 10, 'text', 'text', 'full_width', NULL, '2023-04-28 03:19:00', '2023-04-28 03:19:00'),
+(126, 11, 'Text', 'text', 'full_width', 12, '2023-05-27 22:50:24', '2023-05-27 22:50:24'),
+(127, 11, 'subheadline', 'subheadline', 'full_width', 12, '2023-05-27 22:54:59', '2023-05-27 22:54:59'),
+(128, 11, 'text', 'text', 'full_width', NULL, '2023-05-27 22:55:52', '2023-05-27 22:55:52'),
+(129, 11, 'subheadline', 'subheadline', 'full_width', NULL, '2023-05-27 22:56:46', '2023-05-27 22:56:46'),
+(130, 11, 'text', 'text', 'full_width', NULL, '2023-05-27 22:57:28', '2023-05-27 22:57:28'),
+(131, 11, 'quote', 'quote', 'full_width', NULL, '2023-05-27 22:59:50', '2023-05-27 22:59:50'),
+(132, 11, 'text', 'text', 'full_width', NULL, '2023-05-27 23:02:30', '2023-05-27 23:02:30'),
+(133, 11, 'subheadline', 'subheadline', 'full_width', NULL, '2023-05-27 23:03:17', '2023-05-27 23:03:17'),
+(134, 11, 'text', 'text', 'full_width', NULL, '2023-05-27 23:04:17', '2023-05-27 23:04:17'),
+(135, 11, 'list-content', 'list-content', 'full_width', NULL, '2023-05-27 23:04:59', '2023-05-27 23:04:59'),
+(136, 11, 'subheadline', 'subheadline', 'full_width', NULL, '2023-05-27 23:07:50', '2023-05-27 23:08:02'),
+(137, 11, 'text', 'text', 'full_width', NULL, '2023-05-27 23:08:55', '2023-05-27 23:08:55'),
+(138, 11, 'list content', 'list-content', 'full_width', NULL, '2023-05-27 23:09:43', '2023-05-27 23:09:43'),
+(139, 11, 'text', 'text', 'full_width', NULL, '2023-05-27 23:12:07', '2023-05-27 23:12:07'),
+(140, 11, 'subhealine', 'subheadline', 'full_width', NULL, '2023-05-27 23:12:54', '2023-05-27 23:12:54'),
+(141, 11, 'text', 'text', 'full_width', NULL, '2023-05-27 23:13:21', '2023-05-27 23:13:21'),
+(142, 11, 'list content', 'list-content', 'full_width', NULL, '2023-05-27 23:13:55', '2023-05-27 23:13:55'),
+(143, 11, 'subheadline', 'subheadline', 'full_width', NULL, '2023-05-27 23:16:19', '2023-05-27 23:16:19'),
+(144, 11, 'list content', 'list-content', 'full_width', NULL, '2023-05-27 23:16:52', '2023-05-27 23:16:52'),
+(145, 11, 'text', 'text', 'full_width', NULL, '2023-05-27 23:19:04', '2023-05-27 23:19:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `article_faqs`
+--
+
+CREATE TABLE `article_faqs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `article_id` bigint(20) NOT NULL,
+  `faq_question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `faq_answer` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `article_faqs`
+--
+
+INSERT INTO `article_faqs` (`id`, `article_id`, `faq_question`, `faq_answer`, `created_at`, `updated_at`) VALUES
+(2, 11, 'First FAQ', 'First FAQ answer', '2023-05-28 04:42:31', '2023-05-28 04:42:31'),
+(3, 11, 'FAQ Question 2', '<p>FAQ Answer 2</p>', '2023-05-28 04:46:58', '2023-05-28 04:46:58');
 
 -- --------------------------------------------------------
 
@@ -271,13 +315,13 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `cat_name`, `parent_id`, `slug`, `meta_keyword`, `meta_description`, `page_title`, `thumbnail`, `featured_image`, `created_at`, `updated_at`) VALUES
 (4, 'Listening', 0, 'listening', 'IELTS Listening', 'About IELTS Listening', 'The IELTS Listening test will take about 30 minutes, and you will have an extra 10 minutes to transfer your answers to the answer sheet.', '1681023109.png', '1681023109.png', '2023-04-09 00:51:50', '2023-04-09 00:51:50'),
-(5, 'Online Mock Test', 0, 'online-mock-test', 'Mock Test', 'About Mock Test', 'IELTS Online Mock Test', NULL, NULL, '2023-04-11 04:17:20', '2023-04-17 22:14:18'),
-(6, 'IELTS Preparation 2023', 0, 'ielts-preparation-2023', 'IELTS Preparation', 'IELTS Preparation', 'IELTS Preparation 2023', NULL, NULL, '2023-04-17 22:15:31', '2023-04-17 22:15:31'),
+(5, 'Speaking', 0, 'speaking', 'IELTS Speaking', 'About IELTS Speaking', 'IELTS Speaking', NULL, NULL, '2023-04-11 04:17:20', '2023-05-26 06:13:32'),
+(6, 'Reading', 0, 'reading', 'IELTS Reading', 'IELTS Reading', 'IELTS Reading', NULL, NULL, '2023-04-17 22:15:31', '2023-05-26 06:14:16'),
 (7, 'Writing', 0, 'writing', 'IELTS Writing', 'IELTS Writing', 'IELTS Writing', NULL, NULL, '2023-04-17 22:16:24', '2023-04-17 22:16:24'),
-(8, 'Speaking', 0, 'speaking', 'IELTS Speaking', 'IELTS Speaking', 'IELTS Speaking', NULL, NULL, '2023-04-17 22:18:01', '2023-04-17 22:18:01'),
-(9, 'Reading', 0, 'reading', 'IELTS Reading', 'IELTS Reading', 'IELTS Reading', NULL, NULL, '2023-04-17 22:19:18', '2023-04-17 22:19:18'),
-(10, 'Grammar For IELTS', 0, 'grammar-for-ielts', 'Grammar For IELTS', 'Grammar For IELTS', 'Grammar For IELTS', NULL, NULL, '2023-04-17 22:19:51', '2023-04-17 22:19:51'),
-(11, 'Vocabulary For IELTS', 0, 'vocabulary-for-ielts', 'Vocabulary For IELTS', 'Vocabulary For IELTS', 'Vocabulary For IELTS', NULL, NULL, '2023-04-17 22:20:20', '2023-04-17 22:20:20');
+(8, 'Vocabulary For IELTS', 0, 'vocabulary-for-ielts', 'Vocabulary For IELTS', 'Vocabulary For IELTS', 'Vocabulary For IELTS', NULL, NULL, '2023-04-17 22:18:01', '2023-05-26 06:15:03'),
+(9, 'Vocabulary For IELTS', 0, 'vocabulary-for-ielts', 'Vocabulary For IELTS', 'Vocabulary For IELTS', 'Vocabulary For IELTS', NULL, NULL, '2023-04-17 22:19:18', '2023-05-26 06:15:32'),
+(10, 'IELTS Preparation 2023', 0, 'ielts-preparation-2023', 'IELTS Preparation 2023', 'IELTS Preparation 2023', 'IELTS Preparation 2023', NULL, NULL, '2023-04-17 22:19:51', '2023-05-26 06:16:06'),
+(11, 'Online Mock Test', 0, 'online-mock-test', 'Online Mock Test', 'Online Mock Test', 'IELTS Online Mock Test', NULL, NULL, '2023-04-17 22:20:20', '2023-05-26 06:16:46');
 
 -- --------------------------------------------------------
 
@@ -369,7 +413,8 @@ INSERT INTO `hit_counters` (`id`, `article_id`, `ip_address`, `unique_hits`, `ra
 (7, 7, '127.0.0.1', 1, 68, NULL, NULL, NULL, '2023-04-27 00:18:59', '2023-05-22 04:47:47'),
 (8, 8, '127.0.0.1', 1, 38, NULL, NULL, NULL, '2023-04-27 03:17:58', '2023-05-22 04:52:19'),
 (9, 9, '127.0.0.1', 1, 35, NULL, NULL, NULL, '2023-04-27 23:15:16', '2023-05-22 04:58:24'),
-(10, 10, '127.0.0.1', 1, 27, NULL, NULL, NULL, '2023-04-27 23:54:55', '2023-05-22 05:00:30');
+(10, 10, '127.0.0.1', 1, 28, NULL, NULL, NULL, '2023-04-27 23:54:55', '2023-05-26 06:18:15'),
+(11, 11, '127.0.0.1', 1, 36, NULL, NULL, NULL, '2023-05-27 22:52:46', '2023-05-28 05:14:51');
 
 -- --------------------------------------------------------
 
@@ -488,7 +533,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (38, '2023_03_30_042840_create_quiz_fill_blanks_table', 15),
 (39, '2023_04_03_085501_create_quiz_submission_logs_table', 16),
 (40, '2023_04_03_090437_create_quiz_submissions_table', 17),
-(41, '2023_05_02_071120_create_contact_users_table', 18);
+(41, '2023_05_02_071120_create_contact_users_table', 18),
+(42, '2023_05_28_085320_create_article_faqs_table', 19);
 
 -- --------------------------------------------------------
 
@@ -837,7 +883,8 @@ CREATE TABLE `tags` (
 INSERT INTO `tags` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (2, 'Mock Test', '2023-03-24 04:00:13', '2023-03-24 04:00:13'),
 (3, 'Listening', '2023-03-24 04:00:21', '2023-03-24 04:00:21'),
-(4, 'Reading', '2023-03-24 04:00:29', '2023-03-24 04:00:29');
+(4, 'Reading', '2023-03-24 04:00:29', '2023-03-24 04:00:29'),
+(5, 'Writing', '2023-05-27 22:27:58', '2023-05-27 22:27:58');
 
 -- --------------------------------------------------------
 
@@ -944,7 +991,28 @@ INSERT INTO `text_contents` (`id`, `article_id`, `article_content_id`, `content`
 (98, 10, 121, 'Stay Focused', NULL, NULL, 'subheadline', '2023-04-28 03:16:27', '2023-04-28 03:16:27'),
 (99, 10, 123, '<p><span style=\"font-size:18px\"><span style=\"font-family:Arial\"><span style=\"color:#000000\">During the test, try to stay focused and avoid distractions. Because in the IELTS exam, every second counts. Focus on the text and the questions and try not to let your mind wander. If you feel tired or distracted, take a short break of one second to refresh your mind.</span></span></span></p>', NULL, NULL, 'text', '2023-04-28 03:17:52', '2023-04-28 03:17:52'),
 (100, 10, 124, 'Manage Your Stress', NULL, NULL, 'subheadline', '2023-04-28 03:18:33', '2023-04-28 03:18:33'),
-(101, 10, 125, '<p><span style=\"font-size:18px\"><span style=\"font-family:Arial\"><span style=\"color:#000000\">The IELTS reading test can be stressful, but it is essential to manage your stress effectively. Practice relaxation techniques, such as deep breathing or visualization, to calm your mind and body. Remind yourself that you have prepared for the test and that you are capable of performing well. You must remain confident throughout the test.&nbsp;</span></span></span></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Arial\"><span style=\"color:#000000\">In conclusion, the IELTS reading test is a challenging but essential component of the IELTS exam. When it comes to acing the IELTS reading test, there is no one-size-fits-all approach. Every candidate has their strengths and weaknesses, and it&#39;s up to them to determine the best way to prepare for the test. However, there are some tried-and-true methods that can help non-native speakers improve their reading skills and increase their chances of success.</span></span></span></p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Arial\"><span style=\"color:#000000\">One approach is to focus on building vocabulary and enhancing comprehension skills. By reading a variety of materials, such as books, newspapers, and academic journals, candidates can expose themselves to new words and concepts, helping them to better understand the texts they&#39;ll encounter on the IELTS reading test.</span></span></span></p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Arial\"><span style=\"color:#000000\">Another strategy is to practice time management skills, as candidates have a limited amount of time to complete the test. This involves learning to quickly scan texts for important information, avoiding getting bogged down by difficult passages, and pacing oneself to ensure that all questions are answered before time runs out.</span></span></span></p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Arial\"><span style=\"color:#000000\">Ultimately, success on the IELTS reading test requires dedication, effort, and a willingness to learn and improve. By using a combination of strategies and taking advantage of available resources, such as practice tests and study materials, non-native speakers can confidently approach the test and achieve their desired scores</span></span></span></p>', NULL, NULL, 'text', '2023-04-28 03:19:34', '2023-04-28 03:20:01');
+(101, 10, 125, '<p><span style=\"font-size:18px\"><span style=\"font-family:Arial\"><span style=\"color:#000000\">The IELTS reading test can be stressful, but it is essential to manage your stress effectively. Practice relaxation techniques, such as deep breathing or visualization, to calm your mind and body. Remind yourself that you have prepared for the test and that you are capable of performing well. You must remain confident throughout the test.&nbsp;</span></span></span></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Arial\"><span style=\"color:#000000\">In conclusion, the IELTS reading test is a challenging but essential component of the IELTS exam. When it comes to acing the IELTS reading test, there is no one-size-fits-all approach. Every candidate has their strengths and weaknesses, and it&#39;s up to them to determine the best way to prepare for the test. However, there are some tried-and-true methods that can help non-native speakers improve their reading skills and increase their chances of success.</span></span></span></p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Arial\"><span style=\"color:#000000\">One approach is to focus on building vocabulary and enhancing comprehension skills. By reading a variety of materials, such as books, newspapers, and academic journals, candidates can expose themselves to new words and concepts, helping them to better understand the texts they&#39;ll encounter on the IELTS reading test.</span></span></span></p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Arial\"><span style=\"color:#000000\">Another strategy is to practice time management skills, as candidates have a limited amount of time to complete the test. This involves learning to quickly scan texts for important information, avoiding getting bogged down by difficult passages, and pacing oneself to ensure that all questions are answered before time runs out.</span></span></span></p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Arial\"><span style=\"color:#000000\">Ultimately, success on the IELTS reading test requires dedication, effort, and a willingness to learn and improve. By using a combination of strategies and taking advantage of available resources, such as practice tests and study materials, non-native speakers can confidently approach the test and achieve their desired scores</span></span></span></p>', NULL, NULL, 'text', '2023-04-28 03:19:34', '2023-04-28 03:20:01'),
+(102, 11, 126, '<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">IELTS Writing Task 1 can feel like a voyage into unknown territory, especially when confronted with complex graphs and data representations. We understand the common challenges and uncertainties that many candidates face during this crucial stage of the exam. </span></span></span></span></p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">But don&#39;t worry! We extend our hand to guide you through the process in this blog, offering empathetic support and invaluable strategies that will turn your uncertainties into unwavering confidence.</span></span></span></span></p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">This blog post aims to provide you with comprehensive tips and strategies for succeeding in Writing Task 1 of the <a href=\"https://ielts.live/writing-service\">IELTS exam</a>.</span></span></span></span></p>', NULL, NULL, 'text', '2023-05-27 22:52:25', '2023-05-27 23:22:23'),
+(103, 11, 127, 'Understanding Writing Task 1:', NULL, NULL, 'subheadline', '2023-05-27 22:55:09', '2023-05-27 22:55:09'),
+(104, 11, 128, '<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">Writing Task 1 requires you to carefully analyze and summarize visual information, such as graphs, charts, tables, or diagrams. These visuals may represent data trends, comparisons, or processes. To excel in this task, it is important to identify the key features and present them coherently and logically.</span></span></span></span></p>', NULL, NULL, 'text', '2023-05-27 22:56:14', '2023-05-27 22:56:14'),
+(105, 11, 129, 'Example of Writing Task 1 Question:', NULL, NULL, 'subheadline', '2023-05-27 22:56:55', '2023-05-27 22:56:55'),
+(106, 11, 130, '<h2><span style=\"font-size:18px\">Let&#39;s consider an example question to illustrate how to approach it effectively:</span></h2>', NULL, NULL, 'text', '2023-05-27 22:58:16', '2023-05-27 22:59:18'),
+(107, 11, 131, '<p><em><span style=\"font-size:11.0pt\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">&quot;You should spend about 20 minutes on this task. The graph below shows the percentage of car owners in a particular city who use their vehicles for different purposes. Summarize the information by selecting and reporting the main features and make comparisons where relevant.&quot;</span></span></span></em></p>', NULL, NULL, 'quote', '2023-05-27 23:00:46', '2023-05-27 23:01:55'),
+(108, 11, 132, '<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">Then you&rsquo;ll be presented with a graph.</span></span></span></span></p>', NULL, NULL, 'text', '2023-05-27 23:02:45', '2023-05-27 23:02:45'),
+(109, 11, 133, 'Vocabulary for Writing Task 1:', NULL, NULL, 'subheadline', '2023-05-27 23:03:31', '2023-05-27 23:03:31'),
+(110, 11, 134, '<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">Utilizing appropriate vocabulary enhances the quality of your Task 1 response. Here are some valuable suggestions:</span></span></span></span></p>', NULL, NULL, 'text', '2023-05-27 23:04:31', '2023-05-27 23:04:31'),
+(111, 11, 135, '[\"Use accurate verbs to describe changes: For instance, you can use \\\"increase,\\\" \\\"decrease,\\\" \\\"fluctuate,\\\" \\\"peak,\\\" or \\\"stabilize\\\" to portray data trends effectively.\",\"Incorporate suitable adjectives to highlight the magnitude of changes: Consider using words like \\\"significant,\\\" \\\"gradual,\\\" \\\"rapid,\\\" \\\"slight,\\\" or \\\"considerable\\\" to describe the intensity of data variations.\",\"Include relevant nouns to ensure clarity: Terms such as \\\"trend,\\\" \\\"data,\\\" \\\"figures,\\\" \\\"proportion,\\\" or \\\"comparison\\\" can help convey the intended message.\",\"Use linking words and phrases: Employing words like \\\"moreover,\\\" \\\"furthermore,\\\" \\\"in contrast,\\\" \\\"overall,\\\" or \\\"as a result\\\" enhances the coherence and flow of your response.\",\"Remember to select vocabulary that accurately describes the data and emphasizes significant trends or changes. Strive for variety in your word choice to avoid repetition.\"]', NULL, NULL, 'list-content', '2023-05-27 23:06:22', '2023-05-27 23:06:22'),
+(112, 11, 136, 'Sentence Structure in Writing Task 1:', NULL, NULL, 'subheadline', '2023-05-27 23:08:11', '2023-05-27 23:08:11');
+INSERT INTO `text_contents` (`id`, `article_id`, `article_content_id`, `content`, `font`, `font_size`, `content_type`, `created_at`, `updated_at`) VALUES
+(113, 11, 137, '<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">Crafting well-structured sentences plays a vital role in conveying information clearly. Consider the following guidelines:</span></span></span></span></p>', NULL, NULL, 'text', '2023-05-27 23:09:14', '2023-05-27 23:09:14'),
+(114, 11, 138, '[\"Start with an introductory sentence that provides an overview of the main trends or features presented in the visual information.\",\"Use simple, compound, and complex sentences to convey information effectively.\",\"Support your main points with specific details and figures extracted from the visual data.\",\"Compare and contrast data using appropriate comparative language, such as \\\"while,\\\" \\\"in contrast,\\\" or \\\"by comparison.\\\"\",\"Employ the passive voice when the subject is not the primary focus or when emphasizing the object of the action.\"]', NULL, NULL, 'list-content', '2023-05-27 23:10:50', '2023-05-27 23:10:50'),
+(115, 11, 139, '<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">By following these guidelines, you can create sentences that are clear, concise, and informative, thereby enhancing the overall coherence and effectiveness of your response.</span></span></span></span></p>', NULL, NULL, 'text', '2023-05-27 23:12:20', '2023-05-27 23:12:20'),
+(116, 11, 140, 'Tips and Strategies for Success:', NULL, NULL, 'subheadline', '2023-05-27 23:13:02', '2023-05-27 23:13:02'),
+(117, 11, 141, '<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">To succeed in Writing Task 1, consider the following tips and strategies:</span></span></span></span></p>', NULL, NULL, 'text', '2023-05-27 23:13:40', '2023-05-27 23:13:40'),
+(118, 11, 142, '[\"Carefully analyze the given visual information before you start writing. Take note of the main features, trends, and comparisons.\",\"Plan your writing by outlining the main points and the sequence in which you will present them.\",\"Aim for a balanced response that covers all the relevant aspects of the visual information. Avoid focusing solely on one particular trend or feature.\",\"Manage your time effectively, allocating sufficient time for planning, writing, and reviewing.\",\"Maintain a clear and logical structure throughout your response. Begin with an introduction, present the main trends and features in the body paragraphs, and conclude with a summary.\",\"Use cohesive devices such as linking words and phrases to connect ideas and paragraphs smoothly.\",\"Practice paraphrasing to demonstrate your language skills and avoid repetitive language. This will also help you avoid copying phrases directly from the question.\",\"Pay attention to grammar, punctuation, and spelling to ensure accuracy in your response. Errors in these areas can affect the overall coherence and clarity of your writing.\",\"Allocate a few minutes at the end to review and edit your work. Look for any errors, omissions, or areas where you can improve the clarity of your response.\"]', NULL, NULL, 'list-content', '2023-05-27 23:15:47', '2023-05-27 23:15:47'),
+(119, 11, 143, 'Here’s a list of detailed instructions you can follow:', NULL, NULL, 'subheadline', '2023-05-27 23:16:31', '2023-05-27 23:16:31'),
+(120, 11, 144, '[\"You will come across visual information in the form of graphs, charts, tables, or diagrams in Writing Task 1. Your task is to efficiently analyse and summarise the information presented by these visuals, which compare or highlight data trends or other processes.\",\"Start by paying close attention to the provided visual information. Make a note of the visual\'s title, axes labels, units of measurement, and any other labels or notes that are included. Prior to continuing, comprehend the setting and aim of the data presented.\",\"It\'s important to recognise the image\'s primary features. Look for the most prominent trends, patterns, or noteworthy data points. Identifying the highest or lowest values, significant changes or fluctuations, or noteworthy comparisons between various categories or time periods are some examples of this.\",\"Once you\'ve determined the key components, it\'s crucial to present them logically and coherently in your response. Start with an overview of the visual and its primary goal in the introduction. Mentioning the type of visual (such as a bar chart or line graph) and the topic it represents can be part of this.\",\"Concentrate on the primary trends and features in the body paragraphs. Start with the most important or obvious trend and back up your claims with specific examples. When describing the information, be sure to use precise language and accurate data from the visual. Compare various components or categories, pointing out any standout differences or similarities.\",\"Think through your response before you answer. The data can be organized either chronologically, from the earliest to the most recent data points or according to the significance of the trends or features. Make sure there is a clear progression of ideas and that your paragraphs flow smoothly.\",\"Remember to include all the key facts in the information summary without going into too much detail. Avoid getting bogged down in minute details and concentrate on the main ideas that convey the message of the image. Briefly summarise the main comparisons and trends, emphasising the most important conclusions.\",\"Finally, wrap up your analysis by summarising the key elements and patterns seen in the illustration. If appropriate, you can also make a final observation or comment on how the data may be interpreted. By carefully analysing the visual, identifying the key features, and presenting them coherently and logically, you can demonstrate a strong understanding of the information and effectively fulfil the requirements of Writing Task 1.\"]', NULL, NULL, 'list-content', '2023-05-27 23:18:33', '2023-05-27 23:18:33'),
+(121, 11, 145, '<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">Mastering IELTS Writing Task 1 requires preparation, practice, and a thorough understanding of the task&#39;s requirements. Following the tips and strategies outlined in this blog post will improve your ability to analyse and describe visual information effectively, increasing your chances of success on the IELTS exam. </span></span></span></span></p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">Remember to practice regularly and seek feedback to improve your skills. You can confidently approach Writing Task 1 and achieve your desired</span> <a href=\"https://ielts.live/writing-service\">IELTS score</a><span style=\"color:black\"> with dedication and practice. </span></span></span></span></p>\r\n\r\n<p><span style=\"font-size:18px\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"font-family:&quot;Arial&quot;,sans-serif\"><span style=\"color:black\">Good luck with your <a href=\"https://ielts.live/Exam-library-All\">IELTS preparation</a>!</span></span></span></span></p>', NULL, NULL, 'text', '2023-05-27 23:21:34', '2023-05-27 23:21:34');
 
 -- --------------------------------------------------------
 
@@ -1029,6 +1097,12 @@ ALTER TABLE `articles`
 -- Indexes for table `article_contents`
 --
 ALTER TABLE `article_contents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `article_faqs`
+--
+ALTER TABLE `article_faqs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1236,13 +1310,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `article_contents`
 --
 ALTER TABLE `article_contents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+
+--
+-- AUTO_INCREMENT for table `article_faqs`
+--
+ALTER TABLE `article_faqs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `audio_contents`
@@ -1284,7 +1364,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `hit_counters`
 --
 ALTER TABLE `hit_counters`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `image_contents`
@@ -1308,7 +1388,7 @@ ALTER TABLE `like_articles`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `modules`
@@ -1398,13 +1478,13 @@ ALTER TABLE `right_text_videos`
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `text_contents`
 --
 ALTER TABLE `text_contents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `users`

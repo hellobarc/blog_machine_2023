@@ -15,6 +15,7 @@ use App\Models\{
                     Comment,
                     HitCounter,
                     Tags,
+                    ArticleFaq,
                 };
 use App\Models\Quiz\{
                         QuizMultipleChoice,
@@ -136,6 +137,11 @@ class Helpers {
         //     $article_id = $item->id;
         // }
         return $articles;
+    }
+    public static function get_article_faq($article_id)
+    {
+        $allArticleFaq = ArticleFaq::where('article_id', $article_id)->get();
+        return $allArticleFaq;
     }
     
 }

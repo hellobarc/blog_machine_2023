@@ -18,6 +18,7 @@ use App\Http\Controllers\{
                             TagsController,
                             CommentController,
                             UsersController,
+                            FAQController,
                         };
 use App\Http\Controllers\Quiz\{
                             QuizController,
@@ -184,6 +185,15 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::controller(UsersController::class)->group(function () {
         Route::get('/all-user','users')->name('admin.user');
         Route::get('/contacted-user','contactedUser')->name('admin.contact.user');
+    });
+    Route::controller(FAQController::class)->group(function () {
+        Route::get('/manage-faq/{article_id}','getAll')->name('admin.manage.faq');
+        Route::get('/create-faq/{article_id}','create')->name('admin.create.faq');
+        Route::post('/store-faq','store')->name('admin.store.faq');
+        Route::get('/show-faq/{id}','show')->name('admin.show.faq');
+        Route::post('/update-faq/{id}','update')->name('admin.update.faq');
+        Route::get('/delete-faq/{id}','destroy')->name('admin.store.destroy');
+        //Route::get('/contacted-user','contactedUser')->name('admin.contact.user');
     });
 });
 

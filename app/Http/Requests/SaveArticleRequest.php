@@ -29,7 +29,7 @@ class SaveArticleRequest extends FormRequest
             'meta_keyword'      => 'required|max:200',
             'meta_description'  => 'required|max:10000',
             'page_title'        => 'required|string|max:200',
-            'thumbnail'         => 'required|image|mimes:jpeg,jpg,png|dimensions:max_width=942,max_height=530',
+            'thumbnail'         => 'required|image|mimes:jpeg,jpg,png|dimensions:min_width=1412,min_height=794',
             'custom_date'       => 'required|date',
             'author_id'         => 'required|integer',
             'is_featured'       => 'required|integer',

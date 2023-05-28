@@ -83,6 +83,11 @@
 												<td>
 													<a href="{{route('admin.show.article', $rows->id)}}" class="btn btn-success btn-sm">Edit</a>
 													<a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal_{{$rows->id}}">Delete</a>
+													@if(Helper::get_article_faq($rows->id))
+														<a href="{{route('admin.manage.faq', ['article_id'=>$rows->id])}}" class="btn btn-primary btn-sm">View FAQ</a>
+													@else
+														<a href="{{route('admin.create.faq', ['article_id'=>$rows->id])}}" class="btn btn-primary btn-sm">+ Add FAQ</a>
+													@endif
 												</td>
 											</tr>
 											<!-- Delete Modal -->

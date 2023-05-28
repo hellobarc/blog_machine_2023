@@ -22,6 +22,7 @@ use App\Models\{
                     LikeArticle,
                     HitCounter,
                     Tags,
+                    ArticleFaq,
                 };
 
 use App\Models\Quiz\{
@@ -331,7 +332,8 @@ class HomepageController extends Controller
         $comments = Comment::where('article_id', $id)->where('status', 'approved')->with('user')->paginate(2);
         $likes = LikeArticle::where('article_id', $id)->first();
         $tags = Tags::inRandomOrder()->take(17)->get();
-        return view('theme.'.$this->theme_name.'.pages.detail_page')->with(['meta'=>$meta,'detail_post'=>$detail_post,'related_post'=>$related_post, 'data'=>$data, 'categories'=>$categories, 'article_id'=>$id, 'article_slug'=>$slug, 'comments'=>$comments, 'likes'=>$likes, 'popularPost'=>$popular_post, 'allTags'=>$tags]);
+        $all_article_faq = ArticleFaq::where('article_id', $id)->get();
+        return view('theme.'.$this->theme_name.'.pages.detail_page')->with(['meta'=>$meta,'detail_post'=>$detail_post,'related_post'=>$related_post, 'data'=>$data, 'categories'=>$categories, 'article_id'=>$id, 'article_slug'=>$slug, 'comments'=>$comments, 'likes'=>$likes, 'popularPost'=>$popular_post, 'allTags'=>$tags, 'all_article_faq'=>$all_article_faq]);
 
     }
     private function hitCounter($id)

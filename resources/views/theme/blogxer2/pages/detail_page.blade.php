@@ -1575,7 +1575,7 @@
                                                 @endphp
                                                 <ol class="info-list">
                                                     @foreach ($decode_list as $list)
-                                                        <li style="font-size: 1.7rem;">{{$list}}</li>
+                                                        <li style="font-size: 18px;">{{$list}}</li>
                                                     @endforeach
                                                 </ol>
                                                 {{-- Quiz section start        --}}

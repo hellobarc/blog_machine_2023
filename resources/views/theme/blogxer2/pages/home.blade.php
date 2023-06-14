@@ -2,7 +2,8 @@
 @extends('theme.'.env('SITE_THEME').'.master')
 @section('meta_tags')
 @if($meta)
-    <title>{{$meta['title']}} - {{env('SITE_URL', 'Site Name')}}</title>
+    {{-- <title>{{$meta['title']}} - {{env('SITE_URL', 'Site Name')}}</title> --}}
+    <title>{{$meta['title']}}</title>
     <meta name='description' itemprop='description' content='{{$meta['description']}}' />
     <?php $tags = implode(',', $meta['tags']); ?>
     <meta name='keywords' content='{{$tags}}' />

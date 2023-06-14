@@ -47,7 +47,7 @@ class HomepageController extends Controller
     }
 
     public function homepage(){
-        $meta['title'] = 'Home Page';
+        $meta['title'] = 'IELTS.Live';
         $meta['description'] = 'Home Page Description';
         $meta['tags'] = ['tag1','tag2','tag3'];
         $meta['created_at'] = date('d-m-Y');

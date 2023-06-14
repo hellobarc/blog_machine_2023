@@ -59,7 +59,7 @@
                         <div>
                             @foreach ($detail_post as $post)
                                 <div class="item-img">
-                                    <img src="{{asset('uploads/article/thumbnail/'.$post->thumbnail)}}" alt="blog" style="border-radius: 4px;"></a>
+                                    <img src="{{asset('uploads/article/thumbnail/'.$post->thumbnail)}}" alt="{{$post->title}}" style="border-radius: 4px;">
                                 </div>
                                 <ul class="entry-meta meta-color-dark my-5">
                                     <li><i class="fas fa-user"></i>BY <a href="#">{{$post->author->author_name}}</a></li>

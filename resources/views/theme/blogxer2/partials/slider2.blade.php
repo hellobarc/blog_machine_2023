@@ -10,7 +10,7 @@
                 <div class="slider-box-layout1">
                     <a href="{{route('detail_page',['id'=>$item->id,'slug'=>Str::slug($item->title,'-')])}}">
                         <div class="item-img">
-                            <img src="{{asset('uploads/article/thumbnail/'.$item->thumbnail)}}" alt="slider">
+                            <img src="{{asset('uploads/article/thumbnail/'.$item->thumbnail)}}" alt="{{$item->title}}">
                         </div>
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">

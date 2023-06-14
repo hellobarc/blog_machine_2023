@@ -26,7 +26,9 @@
                 @foreach ($popularPost as $popular_post)
                 <li class="single-item">
                     <div class="item-img" style="width: 30%; margin-right: 5px; border-radius:3px">
-                        <a href="{{route('detail_page',['id'=>$popular_post->id,'slug'=>Str::slug($popular_post->title,'-')])}}"><img src="{{asset('uploads/article/thumbnail/'.$popular_post->thumbnail)}}" alt="Post"></a>
+                        <a href="{{route('detail_page',['id'=>$popular_post->id,'slug'=>Str::slug($popular_post->title,'-')])}}">
+                            <img src="{{asset('uploads/article/thumbnail/'.$popular_post->thumbnail)}}" alt="{{$popular_post->title}}">
+                        </a>
                     </div>
                     <div class="item-content" style="margin-left: 11px;">
                         <ul class="entry-meta meta-color-dark">

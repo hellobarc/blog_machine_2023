@@ -57,7 +57,7 @@
                         @foreach ($latestCategoryArticle as $rows)
                             <div class="blog-box-layout3">
                                 <div class="item-img">
-                                    <img src="{{asset('uploads/article/thumbnail/'.$rows->thumbnail)}}" alt="blog">
+                                    <img src="{{asset('uploads/article/thumbnail/'.$rows->thumbnail)}}" alt="{{$rows->title}}">
                                     {{-- <a class="play-btn popup-youtube" href="http://www.youtube.com/watch?v=1iIZeIy7TqM">
                                         <i class="flaticon-play-arrow"></i> --}}
                                     </a>
@@ -86,7 +86,9 @@
                                 <div class="col-sm-6 no-equal-item">
                                     <div class="blog-box-layout3">
                                         <div class="item-img">
-                                            <a href="{{route('detail_page',['id'=>$cat_article->id,'slug'=>Str::slug($cat_article->title,'-')])}}"><img src="{{asset('uploads/article/thumbnail/'.$cat_article->thumbnail)}}" alt="blog"></a>
+                                            <a href="{{route('detail_page',['id'=>$cat_article->id,'slug'=>Str::slug($cat_article->title,'-')])}}">
+                                                <img src="{{asset('uploads/article/thumbnail/'.$cat_article->thumbnail)}}" alt="{{$cat_article->title}}">
+                                            </a>
                                         </div>
                                         <div class="item-content">
                                             <ul class="entry-meta meta-color-dark">

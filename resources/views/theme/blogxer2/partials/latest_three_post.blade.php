@@ -3,7 +3,9 @@
 	   <div class="col-lg-4">
 			<div class="blog-box-layout1 text-left">
 				<div class="item-img">
-					<a href="{{route('detail_page',['id'=>$post->id,'slug'=>Str::slug($post->title,'-')])}}"><img src="{{asset('uploads/article/thumbnail')}}/{{$post->thumbnail}}" alt="blog"></a>
+					<a href="{{route('detail_page',['id'=>$post->id,'slug'=>Str::slug($post->title,'-')])}}">
+						<img src="{{asset('uploads/article/thumbnail')}}/{{$post->thumbnail}}" alt="{{$post->title}}">
+					</a>
 				</div>
 				<div class="item-content">
 					<ul class="entry-meta meta-color-dark">

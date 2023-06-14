@@ -63,7 +63,9 @@
                             <hr>
                             <div class="blog-box-layout1 text-left">
                                 <div class="item-img">
-                                    <a href="{{route('detail_page',['id'=>$topLikesPost->id,'slug'=>Str::slug($topLikesPost->title,'-')])}}"><img src="{{asset('uploads/article/thumbnail/'.$topLikesPost->thumbnail)}}" alt="blog"></a>
+                                    <a href="{{route('detail_page',['id'=>$topLikesPost->id,'slug'=>Str::slug($topLikesPost->title,'-')])}}">
+                                        <img src="{{asset('uploads/article/thumbnail/'.$topLikesPost->thumbnail)}}" alt="{{$topLikesPost->title}}">
+                                    </a>
                                 </div>
                                 <div class="item-content">
                                     <ul class="entry-meta meta-color-dark">
@@ -134,7 +136,9 @@
                                 <div class="col-md-6">
                                     <div class="blog-box-layout1 text-left">
                                         <div class="item-img">
-                                            <a href="{{route('detail_page',['id'=>$row->id,'slug'=>Str::slug($row->title,'-')])}}"><img src="{{asset('uploads/article/thumbnail/'.$row->thumbnail)}}" alt="blog"></a>
+                                            <a href="{{route('detail_page',['id'=>$row->id,'slug'=>Str::slug($row->title,'-')])}}">
+                                                <img src="{{asset('uploads/article/thumbnail/'.$row->thumbnail)}}" alt="{{$row->title}}">
+                                            </a>
                                         </div>
                                         <div class="item-content">
                                             <ul class="entry-meta meta-color-dark">
@@ -215,7 +219,9 @@
                                             @foreach ($trending_post as $trendingPost)
                                                 <li class="post-item">
                                                     <div class="item-img" style="width: 25%; margin-right: 5px; border-radius:3px">
-                                                        <a href="{{route('detail_page',['id'=>$trendingPost->id,'slug'=>Str::slug($trendingPost->title,'-')])}}"><img src="{{asset('uploads/article/thumbnail/'.$trendingPost->thumbnail)}}" alt="Post"></a>
+                                                        <a href="{{route('detail_page',['id'=>$trendingPost->id,'slug'=>Str::slug($trendingPost->title,'-')])}}">
+                                                            <img src="{{asset('uploads/article/thumbnail/'.$trendingPost->thumbnail)}}" alt="{{$trendingPost->title}}">
+                                                        </a>
                                                     </div>
                                                     <div class="item-content">
                                                         <ul class="entry-meta meta-color-dark">
@@ -232,7 +238,9 @@
                                             @foreach ($popular_post as $popularPost)
                                                 <li class="post-item">
                                                     <div class="item-img" style="width: 25%; margin-right: 5px; border-radius:3px">
-                                                        <a href="{{route('detail_page',['id'=>$popularPost->id,'slug'=>Str::slug($popularPost->title,'-')])}}"><img src="{{asset('uploads/article/thumbnail/'.$popularPost->thumbnail)}}" alt="Post"></a>
+                                                        <a href="{{route('detail_page',['id'=>$popularPost->id,'slug'=>Str::slug($popularPost->title,'-')])}}">
+                                                            <img src="{{asset('uploads/article/thumbnail/'.$popularPost->thumbnail)}}" alt="{{$popularPost->title}}">
+                                                        </a>
                                                     </div>
                                                     <div class="item-content mt-2">
                                                         <ul class="entry-meta meta-color-dark">
@@ -306,7 +314,7 @@
                                 @foreach ($latestSingleFeaturePost as $item)
                                     <div class="featured-post-box-1">
                                         <div class="item-img">
-                                            <img src="{{asset('uploads/article/thumbnail/'.$item->thumbnail)}}" alt="Blog Post">
+                                            <img src="{{asset('uploads/article/thumbnail/'.$item->thumbnail)}}" alt="{{$item->title}}">
                                         </div>
                                         <div class="item-content">
                                             <ul class="entry-meta meta-color-dark">

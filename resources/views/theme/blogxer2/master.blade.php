@@ -7,7 +7,7 @@
     @yield('meta_tags')
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {{-- <link rel="shortcut icon" type="image/x-icon" href="{{asset('theme/default/theme/default/img/favicon.png')}}"> --}}
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logo.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logo-blue.png')}}">
     <link rel="stylesheet" href="{{asset('theme/default/css/normalize.css')}}">
     <link rel="stylesheet" href="{{asset('theme/default/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('theme/default/css/bootstrap.min.css')}}">

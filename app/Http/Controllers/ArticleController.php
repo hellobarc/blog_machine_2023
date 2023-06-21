@@ -66,7 +66,7 @@ class ArticleController extends Controller
     public function store(SaveArticleRequest $request) 
     {
         $image = $request->file('thumbnail');
-        $img = time().'.'.$image->getClientOriginalExtension();
+        $img = rand(1, 999).'-'.$image->getClientOriginalName();
         $location = public_path('uploads/article/thumbnail/' .$img);
         $imgFile = Image::make($image)->save($location);
 

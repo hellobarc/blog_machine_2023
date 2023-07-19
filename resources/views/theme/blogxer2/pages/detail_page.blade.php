@@ -55,7 +55,7 @@
              
             <div class="container">
                 <div class="row gutters-50">
-                    <div class="col-lg-8">
+                    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12">
                         <div>
                             @foreach ($detail_post as $post)
                                 <div class="item-img">
@@ -3865,8 +3865,11 @@
                             @include('theme.blogxer2.pages.details_page_segment.footer-details-page')
                         </div>
                     </div>
-                    {{-- details page right side bar start --}}
-                    @include('theme.blogxer2.pages.details_page_segment.right-side-bar-details-page')
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        {{-- details page right side bar start --}}
+                        @include('theme.blogxer2.pages.details_page_segment.right-side-bar-details-page')
+                    </div>
+                    
                 </div>
             </div>
         </section>

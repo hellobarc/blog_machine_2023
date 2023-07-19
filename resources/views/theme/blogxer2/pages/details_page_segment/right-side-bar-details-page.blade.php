@@ -1,4 +1,4 @@
-<div class="col-lg-4 sidebar-widget-area sidebar-break-md">
+<div class="sidebar-widget-area sidebar-break-md">
     {{-- search section start --}}
     <div id="search-2" class="widget widget_search">
         <form role="search" method="GET" class="search-form" action="{{route('search_page')}}">
@@ -145,11 +145,13 @@
         <div class="section-heading heading-dark">
             <h3 class="item-heading">Tags</h3>
         </div>
-        <div class="d-flex justify-content-start">
+        <div class="row">
             @foreach ($allTags as $item)
+            <div class="col">
                 <div class="widget_tag_cloud mr-2">
                     <a href="{{route('tag_page',['id'=>$item->id, 'slug'=> Str::slug($item->name,'-')])}}">{{$item->name}}</a>
                 </div>
+            </div>
             @endforeach
         </div>
     </div>

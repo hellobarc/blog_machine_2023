@@ -69,6 +69,16 @@ class HomepageController extends Controller
         $all_post = $this->articleRepository->getAll();
         return view('theme.'.$this->theme_name.'.pages.about')->with(['all_post'=>$all_post]);
     }
+    public function privacyPolicy()
+    {
+        $all_post = $this->articleRepository->getAll();
+        return view('theme.'.$this->theme_name.'.pages.privacy_policy')->with(['all_post'=>$all_post]);
+    }
+    public function termsConditions()
+    {
+        $all_post = $this->articleRepository->getAll();
+        return view('theme.'.$this->theme_name.'.pages.terms_conditions')->with(['all_post'=>$all_post]);
+    }
 
     public function contact(){
 

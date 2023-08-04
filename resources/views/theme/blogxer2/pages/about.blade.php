@@ -24,35 +24,31 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="about-box-layout2">
-                            <div class="item-subtitle">Hello!</div>
-                            {{-- <h2 class="item-title"><span>I’m</span> Rosario Kareon </h2> --}}
-                            <p>IELTS Live is a web-based application built by British American Resource Centre (BARC) as part of our integrated online learning environment. 
-                                It has been made accessible not only to our students but also to IELTS candidates all over the world. 
-                                IELTS Live is the system where candidates can take IELTS mock tests, see their band scores, learn from their mistakes and get useful tips from some of our highly experienced instructors at BARC. 
-                                Extra measures have been taken towards ensuring the application’s user-friendliness and quality of each feedback, in order to provide beneficial learning experiences for the IELTS candidates.
-                            </p>
-                           
-                            <ul class="item-social">
-                                <li><a href="https://www.facebook.com/IELTSdotlive" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                {{-- <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li> --}}
-                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li><a href="https://www.youtube.com/@IELTSLive" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                                {{-- <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li> --}}
-                            </ul>
-                        </div>
-                    </div>
-                    {{-- <div class="col-lg-6">
-                        <div class="about-box-layout3">
-                            <img src="img/about/about2.jpg" alt="about">
-                            <a class="play-btn popup-youtube" href="http://www.youtube.com/watch?v=1iIZeIy7TqM">
-                                <i class="flaticon-play-arrow"></i>
-                            </a>
-                        </div>
-                    </div> --}}
+                <div class="about-box-layout2">
+                    <div class="item-subtitle">Hello!</div>
+                    {{-- <h2 class="item-title"><span>I’m</span> Rosario Kareon </h2> --}}
+                    <p>IELTS Live is a web-based application built by British American Resource Centre (BARC) as part of our integrated online learning environment. 
+                        It has been made accessible not only to our students but also to IELTS candidates all over the world. 
+                        IELTS Live is the system where candidates can take IELTS mock tests, see their band scores, learn from their mistakes and get useful tips from some of our highly experienced instructors at BARC. 
+                        Extra measures have been taken towards ensuring the application’s user-friendliness and quality of each feedback, in order to provide beneficial learning experiences for the IELTS candidates.
+                    </p>
+                    
+                    <ul class="item-social">
+                        <li><a href="https://www.facebook.com/IELTSdotlive" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        {{-- <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li> --}}
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://www.youtube.com/@IELTSLive" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                        {{-- <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li> --}}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="about-box-layout3">
+                    <img src="{{asset('images/about-us.jpg')}}" alt="about">
+                    {{-- <a class="play-btn popup-youtube" href="http://www.youtube.com/watch?v=1iIZeIy7TqM">
+                        <i class="flaticon-play-arrow"></i>
+                    </a> --}}
                 </div>
             </div>
         </div>

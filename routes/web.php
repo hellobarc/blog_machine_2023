@@ -52,6 +52,8 @@ Route::controller(HomepageController::class)->group(function () {
         Route::post('/quiz-submission', 'quizSubmission')->name('quiz.submission');
         Route::get('/about', 'about')->name('about');
         Route::get('/contact', 'contact')->name('contact');
+        Route::get('/privacy-policy', 'privacyPolicy')->name('privacy_policy');
+        Route::get('/terms-conditions', 'termsConditions')->name('terms_conditions');
     });
 
 Route::post('/newsletter', [NewsLetterController::class,'subcribtion'])->name('newsletter.subcribtion');

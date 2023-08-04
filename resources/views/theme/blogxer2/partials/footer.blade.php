@@ -6,10 +6,14 @@
                 <a href="https://ielts.live/"><img src="{{asset('theme/default/img/logo-light.png')}}" alt="{{env('SITE_NAME')}}"  width="99px"></a>
             </div>
             <ul class="footer-social">
-                <li><a href="#"><i class="fab fa-facebook-f"></i>259k LIKES</a></li>
+                {{-- <li><a href="#"><i class="fab fa-facebook-f"></i>259k LIKES</a></li>
                 <li><a href="#"><i class="fab fa-twitter"></i>480k FOLLOWERS</a></li>
                 <li><a href="#"><i class="fab fa-instagram"></i>280k FOLLOWERS</a></li>
-                <li><a href="#"><i class="fab fa-youtube"></i>180k SUBSCRIBER</a></li>
+                <li><a href="#"><i class="fab fa-youtube"></i>180k SUBSCRIBER</a></li> --}}
+                <li><a href="{{route('about')}}">About</a></li>
+                <li><a href="{{route('contact')}}">Contact Us</a></li>
+                <li><a href="{{route('privacy_policy')}}">Privacy Policy</a></li>
+                <li><a href="{{route('terms_conditions')}}">Terms and Conditions</a></li>
             </ul>
             <div class="copyright">© 2023- 2025 IELTS.LIVE. All Rights Reserved.</div>
         </div>

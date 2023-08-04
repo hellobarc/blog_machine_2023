@@ -10,6 +10,20 @@
                                         {{-- <a href="https://ielts.live/">HOME</a> --}}
                                     </li>
 									 <li>
+										<a href="#">IELTS Practice</a>
+										<ul class="dropdown-menu-col-1">
+											<li>
+												<a href="">All</a>
+											</li>
+											<li>
+												<a href="">Academic</a>
+											</li>
+											<li>
+												<a href="">General</a>
+											</li>
+										</ul>
+									</li>
+									 <li>
 										<a href="#">CATEGORIES</a>
 										<ul class="dropdown-menu-col-1">
 
@@ -36,10 +50,10 @@
 									</li> --}}
 
 									<li>
-										<a href="{{route('contact')}}">CONTACT</a>
+										<a href="https://ielts.live/writing-service">Writing Correction Service</a>
 									</li>
 									<li>
-										<a href="{{route('about')}}">ABOUT</a>
+										<a href="https://ielts.live/speaking-test">Practice Speaking</a>
 									</li>
 									 <li>
 										@if(Auth::guard('customLogin')->user())

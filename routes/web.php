@@ -71,6 +71,8 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
         Route::get('/manage-author','index')->name('author');
         Route::get('/create-author','create')->name('create.author');
         Route::post('/store-author','store')->name('store.author');
+        Route::get('/edit-author/{id}','edit')->name('edit.author');
+        Route::post('/upload-author/{id}','update')->name('upload.author');
         Route::get('/destroy-author/{id}','destroy')->name('destory.author');
     });
     //category routes

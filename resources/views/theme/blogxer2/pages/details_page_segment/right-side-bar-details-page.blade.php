@@ -105,9 +105,8 @@
             <div id="accordion">
                 @foreach ($categories as $category)
                     <div class="card">
-                    <div class="card-header" id="heading_{{$category->id}}">
-                        <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{$category->id}}" aria-expanded="true" aria-controls="collapse_{{$category->id}}">
+                    <div class="card-header my-4" id="heading_{{$category->id}}">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{$category->id}}" aria-expanded="false" aria-controls="collapse_{{$category->id}}">
                             {{$category->cat_name}} <span class="">({{Helper::cat_wise_article($category->id)}})</span>
                         </button>
                         </h5>

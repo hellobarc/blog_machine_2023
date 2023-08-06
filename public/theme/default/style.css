@@ -315,7 +315,20 @@ h1 {
   position: absolute;
 }
 .custom-collapse .btn-link.collapsed:after{
-  content: '\2212';
+  content: '\276E';
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.custom-collapse .btn-link:after{
+  right: 40px;
+  top: 12px;
+  position: absolute;
+  content: '\276E';
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(270deg);
+  z-index: 1111;
 }
 .custom-collapse .collapse a{
   color: #000;

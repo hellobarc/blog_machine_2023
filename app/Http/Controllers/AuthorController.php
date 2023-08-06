@@ -46,6 +46,39 @@ class AuthorController extends Controller
        
         return redirect()->route('author')->with('success', 'Author Created successfully');
     }
+    public function edit($id)
+    {
+        $author = Author::find($id);
+        return view('admin.create-author.edit-author', compact('author'));
+    }
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+        $author = Author::find($id);
+        $image = $request->file('author_image');
+        if($image){
+            if (File::exists('uploads/author/'.$author->image)) {
+                File::delete('uploads/author/'.$author->image);
+            }
+            $img = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('uploads/author/' .$img);
+            $imgFile = Image::make($image)->save($location);
+        }else{
+            $img = $author->image;
+        }
+        
+        Author::updateOrCreate(
+            [
+                'id'=>$id,
+            ],
+            [
+                'author_name'=> $data['author_name'],
+                'image'=> $img,
+                'author_speech'=> $data['author_speech'],
+            ]
+        );
+        return redirect()->route('author')->with('success', 'Author information updated successfully');
+    }
     public function destroy($id)
     {
         $author = Author::find($id);

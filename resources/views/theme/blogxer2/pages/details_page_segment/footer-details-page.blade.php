@@ -1,12 +1,14 @@
 {{-- FAQ section start --}}
-@if(!empty($all_article_faq))
- <h1 class="mt-4">Article FAQ</h1>
+@if(count($all_article_faq) == 0)
+
+@else
+<h1 class="mt-4">Related FAQ</h1>
 <div class="custom-collapse">
     <div id="accordion">
         @foreach ($all_article_faq as $faq)
-            <div class="card" style="border-radius:5px;">
+            <div class="card" style="border-radius:2px; border-top: 1px solid #3c4043 !important; border-bottom: 1px solid #3c4043 !important;">
                 <div class="card-header my-4" id="heading_{{$faq->id}}">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{$faq->id}}" aria-expanded="true" aria-controls="collapse_{{$faq->id}}" style="font-size: 20px !important">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{$faq->id}}" aria-expanded="false" aria-controls="collapse_{{$faq->id}}" style="font-size: 20px !important">
                         {{$faq->faq_question}} 
                     </button>
                 </div>
@@ -22,20 +24,20 @@
 </div>
 @endif
 {{-- FAQ section end --}}
-{{-- tag section start --}}
+{{-- share section start --}}
 <div class="blog-entry-meta">
     <ul>
-        <li class="item-tag"><i class="fas fa-bookmark"></i>
-            @foreach ($detail_post as $post)
+        <li class="item-tag"><i class="fas fa-share"></i>
+            {{-- @foreach ($detail_post as $post)
                     {{Helper::tag_name($post->tags)}}
-            @endforeach
+            @endforeach --}}
+            Share
         </li>
         <li class="item-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="https://www.facebook.com/sharer.php?u={{url()->current()}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/share?url={{url()->current()}}" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?url={{url()->current()}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://web.whatsapp.com/send?url={{url()->current()}}" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </li>
         <li class="item-respons">
             <span title="Likes" id="saveLikeDislike" data-type="like" data-post="{{ $article_id}}" class="mr-2 btn btn-sm btn-outline-primary d-inline font-weight-bold">
@@ -51,7 +53,7 @@
         </li>
     </ul>
 </div>
-{{-- tag section end --}}
+{{-- share section end --}}
 {{-- author section start --}}
 <div class="blog-author">
     @foreach ($detail_post as $post)

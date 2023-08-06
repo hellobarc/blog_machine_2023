@@ -49,6 +49,7 @@
 													@endif
 												</td>
 												<td>
+													<a href="{{route('edit.author', $rows->id)}}" class="btn btn-success btn-sm">Edit</a>
 													<a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal_{{$rows->id}}">Delete</a>
 												</td>
 											</tr>

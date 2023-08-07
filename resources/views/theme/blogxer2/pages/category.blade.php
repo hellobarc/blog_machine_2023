@@ -256,8 +256,7 @@
                                 <div id="accordion">
                                     @foreach ($categories as $category)
                                         <div class="card">
-                                        <div class="card-header" id="heading_{{$category->id}}">
-                                            <h5 class="mb-0">
+                                        <div class="card-header my-4" id="heading_{{$category->id}}">
                                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{$category->id}}" aria-expanded="true" aria-controls="collapse_{{$category->id}}">
                                                 {{$category->cat_name}} <span class="">({{Helper::cat_wise_article($category->id)}})</span>
                                             </button>
@@ -293,11 +292,15 @@
                                 <h3 class="item-heading">Tags</h3>
                             </div>
                             <div class="d-flex justify-content-start">
-                                @foreach ($allTags as $item)
-                                    <div class="widget_tag_cloud mr-2">
-                                        <a href="{{route('tag_page',['id'=>$item->id, 'slug'=> Str::slug($item->name,'-')])}}">{{$item->name}}</a>
-                                    </div>
-                                @endforeach
+                                <div class="row">
+                                    @foreach ($allTags as $item)
+                                        <div class="col">
+                                            <div class="widget_tag_cloud mr-2">
+                                                <a href="{{route('tag_page',['id'=>$item->id, 'slug'=> Str::slug($item->name,'-')])}}">{{$item->name}}</a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                             
                             {{-- <div class="widget-instagram">

@@ -2091,7 +2091,7 @@ nav.template-main-menu > ul > li {
   position: relative;
 }
 nav.template-main-menu > ul > li > a {
-  text-transform: uppercase;
+  text-transform:capitalize;
   font-weight: 500;
   line-height: 1;
   display: block;

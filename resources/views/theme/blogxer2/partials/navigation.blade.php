@@ -21,7 +21,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="#">CATEGORIES</a>
+						<a href="#">Categories</a>
 						<ul class="dropdown-menu-col-1">
 							@foreach ($contents as $content)
 								<li>
